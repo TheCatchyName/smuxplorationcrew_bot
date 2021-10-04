@@ -1,0 +1,1315 @@
+[
+    {
+        "id": "a87b341c1947bfb2",
+        "type": "tab",
+        "label": "SMUX Bot",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9ef52be8e50ac20f",
+        "type": "airtable",
+        "name": "SMUX DBMS"
+    },
+    {
+        "id": "e9698b316b6bbdbc",
+        "type": "chatbot-telegram-node",
+        "botname": "BOT_NAME",
+        "usernames": "",
+        "token": "BOT_TOKEN",
+        "providerToken": "",
+        "polling": "1000",
+        "store": "",
+        "log": "",
+        "debug": false,
+        "webHook": "",
+        "connectMode": "polling"
+    },
+    {
+        "id": "9702b932.eb4518",
+        "type": "chatbot-universal-node",
+        "botname": "Test",
+        "usernames": "",
+        "connectorParams": "",
+        "store": "99497719.973138",
+        "log": "",
+        "debug": false
+    },
+    {
+        "id": "4ece81d070da93a1",
+        "type": "airtable out",
+        "z": "a87b341c1947bfb2",
+        "airtable": "9ef52be8e50ac20f",
+        "operation": "select",
+        "outputType": "array",
+        "table": "Members",
+        "name": "Get user record",
+        "x": 980,
+        "y": 440,
+        "wires": [
+            [
+                "6f91f3d280a0f809"
+            ]
+        ]
+    },
+    {
+        "id": "514d2caae512a466",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "userId to record",
+        "func": "var userId = msg.originalMessage.from.id;\nmsg.payload = {\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 440,
+        "wires": [
+            [
+                "4ece81d070da93a1"
+            ]
+        ]
+    },
+    {
+        "id": "8d16b7af45cde803",
+        "type": "switch",
+        "z": "a87b341c1947bfb2",
+        "name": "check if has fields",
+        "property": "newUser",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": true,
+        "outputs": 2,
+        "x": 1390,
+        "y": 440,
+        "wires": [
+            [
+                "9ed5ca5a1ec8438a",
+                "3ae2cb1fd5835c74"
+            ],
+            [
+                "016f56730b2decde",
+                "c3ba7c7a363a3cee"
+            ]
+        ]
+    },
+    {
+        "id": "3ae2cb1fd5835c74",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "welcome",
+        "message": [
+            {
+                "message": "Welcome back, {{firstName}}!"
+            }
+        ],
+        "language": "none",
+        "x": 1600,
+        "y": 400,
+        "wires": [
+            [
+                "594ed82c6fe11e42"
+            ]
+        ]
+    },
+    {
+        "id": "c3ba7c7a363a3cee",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "sign up prompt",
+        "message": [
+            {
+                "message": "Hello {{firstName}}! Welcome to the SMUXploration Crew Bot! It seems like this is your first time, [please tap here to sign up](https://airtable.com/shrVCvhRsH701DBdl).\n\nThis is your unique Telegram code (do not share it with anyone!):"
+            }
+        ],
+        "language": "none",
+        "x": 1600,
+        "y": 300,
+        "wires": [
+            [
+                "d6e525d6b003bfd6"
+            ]
+        ]
+    },
+    {
+        "id": "9ed5ca5a1ec8438a",
+        "type": "debug",
+        "z": "a87b341c1947bfb2",
+        "name": "switch output 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1600,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "016f56730b2decde",
+        "type": "debug",
+        "z": "a87b341c1947bfb2",
+        "name": "switch output 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1620,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "50996036bfc84db0",
+        "type": "chatbot-telegram-receive",
+        "z": "a87b341c1947bfb2",
+        "bot": "e9698b316b6bbdbc",
+        "botProduction": "",
+        "x": 150,
+        "y": 420,
+        "wires": [
+            [
+                "1aa15878fa8cb82f"
+            ]
+        ]
+    },
+    {
+        "id": "c782b6880de1c17d",
+        "type": "chatbot-telegram-send",
+        "z": "a87b341c1947bfb2",
+        "bot": "e9698b316b6bbdbc",
+        "botProduction": "",
+        "track": true,
+        "passThrough": false,
+        "errorOutput": false,
+        "outputs": 1,
+        "x": 2310,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6f91f3d280a0f809",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "process airtable result",
+        "func": "if (msg.payload.length != 0) {\n    msg.userData = msg.payload[0];\n    msg.newUser = false;\n    msg.userDataMsg = JSON.stringify(msg.userData.fields, null, \"x \");\n} else {\n    msg.newUser = true;\n}\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 440,
+        "wires": [
+            [
+                "8d16b7af45cde803",
+                "f7675537a9afce93"
+            ]
+        ]
+    },
+    {
+        "id": "f7675537a9afce93",
+        "type": "debug",
+        "z": "a87b341c1947bfb2",
+        "name": "airtable output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1380,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "45460bf7f072c9b2",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "first time user",
+        "info": "",
+        "x": 1590,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6666afb768027bbc",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "existing user",
+        "info": "",
+        "x": 1610,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "1aa15878fa8cb82f",
+        "type": "chatbot-rules",
+        "z": "a87b341c1947bfb2",
+        "name": "Message filter",
+        "rules": [
+            {
+                "type": "command",
+                "command": "/help"
+            },
+            {
+                "type": "command",
+                "command": "/start"
+            },
+            {
+                "type": "command",
+                "command": "/update"
+            },
+            {
+                "type": "command",
+                "command": "/faq"
+            },
+            {
+                "type": "command",
+                "command": "/pdpa"
+            },
+            {
+                "type": "anyCommand"
+            }
+        ],
+        "outputs": 6,
+        "x": 340,
+        "y": 420,
+        "wires": [
+            [
+                "fb175c17bd951097"
+            ],
+            [
+                "ce4f9657c9bd5433"
+            ],
+            [
+                "a8f7b1cd805ad9e8"
+            ],
+            [
+                "b423a03108b95589"
+            ],
+            [
+                "7fae7b0a9f5e348c"
+            ],
+            [
+                "af06b4f599545231"
+            ]
+        ]
+    },
+    {
+        "id": "1a67a793fe52b32a",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "/start",
+        "info": "",
+        "x": 690,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "2d1fd9907da7deed",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "commands message",
+        "message": [
+            {
+                "message": "Please use the following commands:\n/update - update your personal particulars\n/join - sign up for an activity/view activities\n/faq - view frequently asked questions"
+            }
+        ],
+        "language": "none",
+        "x": 2360,
+        "y": 300,
+        "wires": [
+            [
+                "4dc0540c47fe580e"
+            ]
+        ]
+    },
+    {
+        "id": "5de05c89711e69c6",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "for joining activities",
+        "info": "",
+        "x": 730,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "d6e525d6b003bfd6",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "tele code",
+        "message": [
+            {
+                "message": "```{{userId}}```"
+            }
+        ],
+        "language": "none",
+        "x": 1780,
+        "y": 300,
+        "wires": [
+            [
+                "a9256aef9c3e81f3"
+            ]
+        ]
+    },
+    {
+        "id": "a9256aef9c3e81f3",
+        "type": "chatbot-params",
+        "z": "a87b341c1947bfb2",
+        "name": "add markdown",
+        "params": [
+            {
+                "platform": "telegram",
+                "name": "parseMode",
+                "value": "Markdown"
+            },
+            {
+                "platform": "telegram",
+                "name": "disableWebPagePreview",
+                "value": true
+            }
+        ],
+        "outputs": 1,
+        "x": 1940,
+        "y": 300,
+        "wires": [
+            [
+                "fa6dd98fcf431af3"
+            ]
+        ]
+    },
+    {
+        "id": "18789953b0cbafec",
+        "type": "link in",
+        "z": "a87b341c1947bfb2",
+        "name": "get user info",
+        "links": [
+            "ce4f9657c9bd5433"
+        ],
+        "x": 655,
+        "y": 440,
+        "wires": [
+            [
+                "514d2caae512a466"
+            ]
+        ]
+    },
+    {
+        "id": "ce4f9657c9bd5433",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "/start",
+        "links": [
+            "18789953b0cbafec"
+        ],
+        "x": 515,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "cd19e85e934feaf3",
+        "type": "link in",
+        "z": "a87b341c1947bfb2",
+        "name": "commands message",
+        "links": [
+            "594ed82c6fe11e42",
+            "fb175c17bd951097",
+            "5218694552e9686b"
+        ],
+        "x": 2195,
+        "y": 300,
+        "wires": [
+            [
+                "2d1fd9907da7deed"
+            ]
+        ]
+    },
+    {
+        "id": "594ed82c6fe11e42",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "request commands",
+        "links": [
+            "cd19e85e934feaf3"
+        ],
+        "x": 1715,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "fb175c17bd951097",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "/help",
+        "links": [
+            "cd19e85e934feaf3"
+        ],
+        "x": 495,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "aea2fb53c19f88ad",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "sends a message containing commands",
+        "info": "",
+        "x": 2350,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "bb3aaa74a63775aa",
+        "type": "airtable out",
+        "z": "a87b341c1947bfb2",
+        "airtable": "9ef52be8e50ac20f",
+        "operation": "select",
+        "outputType": "array",
+        "table": "Members",
+        "name": "Get user record",
+        "x": 980,
+        "y": 540,
+        "wires": [
+            [
+                "b8066f8207efc5a3"
+            ]
+        ]
+    },
+    {
+        "id": "f2f3b752f7706aed",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "userId to record",
+        "func": "var userId = msg.originalMessage.from.id;\nmsg.payload = {\"fields\":[\"update link\"], \"filterByFormula\":\"{utid}='\"+userId+\"'\"};\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 540,
+        "wires": [
+            [
+                "bb3aaa74a63775aa"
+            ]
+        ]
+    },
+    {
+        "id": "bacde1f6040de05e",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "/update",
+        "info": "",
+        "x": 690,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ceb289c6398d70e5",
+        "type": "link in",
+        "z": "a87b341c1947bfb2",
+        "name": "update",
+        "links": [
+            "a8f7b1cd805ad9e8"
+        ],
+        "x": 655,
+        "y": 540,
+        "wires": [
+            [
+                "f2f3b752f7706aed"
+            ]
+        ]
+    },
+    {
+        "id": "a8f7b1cd805ad9e8",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "/update",
+        "links": [
+            "ceb289c6398d70e5"
+        ],
+        "x": 515,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "b8066f8207efc5a3",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "get update link",
+        "func": "if (msg.payload.length != 0) {\n    msg.userData = msg.payload[0];\n    msg.newUser = false;\n} else {\n    msg.newUser = true;\n}\n\nmsg.updateLink = JSON.stringify(msg.userData.fields).split(\"\\\"\")[3];\n// console.log(msg.updateLink)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 540,
+        "wires": [
+            [
+                "4b36c8ef14e9873e"
+            ]
+        ]
+    },
+    {
+        "id": "4b36c8ef14e9873e",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "placeholder",
+        "message": [
+            {
+                "message": "placeholder"
+            }
+        ],
+        "language": "none",
+        "x": 1350,
+        "y": 540,
+        "wires": [
+            [
+                "304f3f78dfff3a62",
+                "769d8e06beeb87ed"
+            ]
+        ]
+    },
+    {
+        "id": "fa6dd98fcf431af3",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "sign up end point",
+        "links": [
+            "154bd3f01ce93ae4"
+        ],
+        "x": 2055,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "154bd3f01ce93ae4",
+        "type": "link in",
+        "z": "a87b341c1947bfb2",
+        "name": "tele endpoint sender",
+        "links": [
+            "fa6dd98fcf431af3",
+            "4dc0540c47fe580e",
+            "d3f3e9e14e3687e5",
+            "779668e31c92bef0",
+            "56225c5e7455a971",
+            "4c9107a9dd15aebd",
+            "53fd5d920f313a16",
+            "bc8995bc9593719d"
+        ],
+        "x": 2175,
+        "y": 460,
+        "wires": [
+            [
+                "c782b6880de1c17d"
+            ]
+        ]
+    },
+    {
+        "id": "4dc0540c47fe580e",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "commands end point",
+        "links": [
+            "154bd3f01ce93ae4"
+        ],
+        "x": 2495,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "d3f3e9e14e3687e5",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "update endpoint",
+        "links": [
+            "154bd3f01ce93ae4"
+        ],
+        "x": 1835,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "304f3f78dfff3a62",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "craft message",
+        "func": "msg.payload.content = \"[Tap here](\" + msg.updateLink + \") to update your personal particulars.\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1540,
+        "y": 540,
+        "wires": [
+            [
+                "49a22934c0132de8"
+            ]
+        ]
+    },
+    {
+        "id": "49a22934c0132de8",
+        "type": "chatbot-params",
+        "z": "a87b341c1947bfb2",
+        "name": "add markdown",
+        "params": [
+            {
+                "platform": "telegram",
+                "name": "parseMode",
+                "value": "Markdown"
+            },
+            {
+                "platform": "telegram",
+                "name": "disableWebPagePreview",
+                "value": true
+            }
+        ],
+        "outputs": 1,
+        "x": 1720,
+        "y": 540,
+        "wires": [
+            [
+                "d3f3e9e14e3687e5"
+            ]
+        ]
+    },
+    {
+        "id": "769d8e06beeb87ed",
+        "type": "debug",
+        "z": "a87b341c1947bfb2",
+        "name": "here!",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1350,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "e80e91dda993ae59",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "test",
+        "message": [
+            {
+                "message": "success!"
+            }
+        ],
+        "language": "none",
+        "x": 330,
+        "y": 700,
+        "wires": [
+            [
+                "779668e31c92bef0"
+            ]
+        ]
+    },
+    {
+        "id": "779668e31c92bef0",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "request update",
+        "links": [
+            "154bd3f01ce93ae4"
+        ],
+        "x": 415,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "f0a06b14da9dac27",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "command processing",
+        "func": "//takes any commands and splits it to command and params\nmsg.userId = msg.payload.chatId;\nmsg.commandParams = null;\nmsg.command = msg.payload.content.split(\"_\")[0];\nmsg.commandParams = msg.payload.content.split(\"_\")[1];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 660,
+        "wires": [
+            [
+                "1cbb2bb19e0fcf5f"
+            ]
+        ]
+    },
+    {
+        "id": "f3096bfec7a5bebc",
+        "type": "link in",
+        "z": "a87b341c1947bfb2",
+        "name": "command processing out",
+        "links": [
+            "af06b4f599545231"
+        ],
+        "x": 655,
+        "y": 660,
+        "wires": [
+            [
+                "f0a06b14da9dac27"
+            ]
+        ]
+    },
+    {
+        "id": "af06b4f599545231",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "all other commands",
+        "links": [
+            "f3096bfec7a5bebc"
+        ],
+        "x": 515,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "6ade8671e5535a1b",
+        "type": "switch",
+        "z": "a87b341c1947bfb2",
+        "name": "/join params",
+        "property": "commandParams",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "null"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1250,
+        "y": 640,
+        "wires": [
+            [
+                "5cf693b9ca27f0b7"
+            ],
+            [
+                "16ee758dcdfd79b2"
+            ]
+        ]
+    },
+    {
+        "id": "1cbb2bb19e0fcf5f",
+        "type": "switch",
+        "z": "a87b341c1947bfb2",
+        "name": "command processing",
+        "property": "command",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "/join",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1020,
+        "y": 660,
+        "wires": [
+            [
+                "6ade8671e5535a1b"
+            ],
+            [
+                "5218694552e9686b"
+            ]
+        ]
+    },
+    {
+        "id": "5218694552e9686b",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "all other commands",
+        "links": [
+            "cd19e85e934feaf3"
+        ],
+        "x": 1175,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "5cf693b9ca27f0b7",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "activity get request",
+        "func": "msg.payload = {\"fields\":[\"Activity Type\",\"Start Date Time\",\"edmlink\"],\"filterByFormula\":\"{uaid}='\"+msg.commandParams+\"'\"};\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1470,
+        "y": 640,
+        "wires": [
+            [
+                "83691eeac594bc02"
+            ]
+        ]
+    },
+    {
+        "id": "83691eeac594bc02",
+        "type": "airtable out",
+        "z": "a87b341c1947bfb2",
+        "airtable": "9ef52be8e50ac20f",
+        "operation": "select",
+        "outputType": "array",
+        "table": "Activities",
+        "name": "Get activity record",
+        "x": 1670,
+        "y": 640,
+        "wires": [
+            [
+                "f236c3b01769b7ab",
+                "04df8bf7e3ed0b17"
+            ]
+        ]
+    },
+    {
+        "id": "f236c3b01769b7ab",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "process result",
+        "func": "if (msg.payload.length != 0) {\n    msg.activityId = msg.payload[0].id;\n    msg.activity = JSON.parse(JSON.stringify(msg.payload[0]));\n} else {\n    msg.activity = null;\n}\n\nconsole.log(JSON.stringify(msg.activity));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1860,
+        "y": 640,
+        "wires": [
+            [
+                "c9bda0fd36c1f44c"
+            ]
+        ]
+    },
+    {
+        "id": "04df8bf7e3ed0b17",
+        "type": "debug",
+        "z": "a87b341c1947bfb2",
+        "name": "before process",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1910,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "66b31309b26cfd4b",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "placeholder",
+        "message": [
+            {
+                "message": "placeholder"
+            }
+        ],
+        "language": "none",
+        "x": 2190,
+        "y": 640,
+        "wires": [
+            [
+                "1b7d20f39f675840"
+            ]
+        ]
+    },
+    {
+        "id": "c9bda0fd36c1f44c",
+        "type": "switch",
+        "z": "a87b341c1947bfb2",
+        "name": "",
+        "property": "activity",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "null"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2010,
+        "y": 640,
+        "wires": [
+            [
+                "66b31309b26cfd4b"
+            ],
+            [
+                "cced5cd28e2d9c9a"
+            ]
+        ]
+    },
+    {
+        "id": "cced5cd28e2d9c9a",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "no activity found",
+        "message": [
+            {
+                "message": "No such activity found!"
+            }
+        ],
+        "language": "none",
+        "x": 2200,
+        "y": 760,
+        "wires": [
+            [
+                "16ee758dcdfd79b2"
+            ]
+        ]
+    },
+    {
+        "id": "56225c5e7455a971",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "errot endpoint",
+        "links": [
+            "154bd3f01ce93ae4"
+        ],
+        "x": 2475,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "1b7d20f39f675840",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "craft message",
+        "func": "msg.payload.content = \"Successfully joined \" + msg.activity.fields[\"Activity Type\"] + \"\\nTime: \" + msg.activity.fields[\"Start Date Time\"] + \"\\n[More information](\" + msg.activity.fields[\"edmlink\"] + \")\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2380,
+        "y": 640,
+        "wires": [
+            [
+                "6fd6f5e5192f41e5",
+                "5a76d508ea1e28aa"
+            ]
+        ]
+    },
+    {
+        "id": "6fd6f5e5192f41e5",
+        "type": "chatbot-params",
+        "z": "a87b341c1947bfb2",
+        "name": "add markdown",
+        "params": [
+            {
+                "platform": "telegram",
+                "name": "parseMode",
+                "value": "Markdown"
+            },
+            {
+                "platform": "telegram",
+                "name": "disableWebPagePreview",
+                "value": true
+            }
+        ],
+        "outputs": 1,
+        "x": 2560,
+        "y": 640,
+        "wires": [
+            [
+                "4c9107a9dd15aebd"
+            ]
+        ]
+    },
+    {
+        "id": "4c9107a9dd15aebd",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "update endpoint",
+        "links": [
+            "154bd3f01ce93ae4"
+        ],
+        "x": 2675,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "5a76d508ea1e28aa",
+        "type": "debug",
+        "z": "a87b341c1947bfb2",
+        "name": "after process",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2300,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "b423a03108b95589",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "/faq",
+        "links": [
+            "fe79ef478e581439"
+        ],
+        "x": 515,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "16ee758dcdfd79b2",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "list activities",
+        "message": [
+            {
+                "message": "Activities list <WIP>"
+            }
+        ],
+        "language": "none",
+        "x": 2370,
+        "y": 820,
+        "wires": [
+            [
+                "56225c5e7455a971"
+            ]
+        ]
+    },
+    {
+        "id": "c9e4caf20fd06d9c",
+        "type": "catch",
+        "z": "a87b341c1947bfb2",
+        "name": "todo!",
+        "scope": null,
+        "uncaught": false,
+        "x": 2370,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fe79ef478e581439",
+        "type": "link in",
+        "z": "a87b341c1947bfb2",
+        "name": "",
+        "links": [
+            "b423a03108b95589"
+        ],
+        "x": 655,
+        "y": 760,
+        "wires": [
+            [
+                "95cf9e699e883648"
+            ]
+        ]
+    },
+    {
+        "id": "7695d28ae623f8ac",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "/faq",
+        "info": "",
+        "x": 690,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "95cf9e699e883648",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "faq message",
+        "message": [
+            {
+                "message": "*How do I withdraw from an activity?*\nPlease contact an exco member from the respective team to withdraw from an activity.\n\n*PDPA Information*\n/pdpa\n\nContact @marcusgohsh for any further questions about this bot and its usage, or if you spot a bug :ladybug:."
+            }
+        ],
+        "language": "none",
+        "x": 770,
+        "y": 760,
+        "wires": [
+            [
+                "d51adaa9e6e20855"
+            ]
+        ]
+    },
+    {
+        "id": "044a155083cee857",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "pdpa message",
+        "message": [
+            {
+                "message": "By using this Telegram Bot, you agree that Singapore Management University (SMU) as represented by SMUXploration Crew, may collect, use and disclose your personal data that you provide in this Telegram Bot for the following purpose(s): i) Administrative and safety matters regarding your participation all SMUXploration Crew activities.\n\nYou also consent to the disclosure of the personal data provided by you in this Telegram Bot, to SMU’s partners or affiliates and other third party service providers that SMU may engage from time to time. If any of the personal data provided by you through this Telegram Bot is disclosed to SMU’s partners or affiliates, and/or third party service providers, SMU will ensure that the disclosure is in accordance with the PDPA.\n\nIf you wish to find out more about SMU’s personal data protection policy, please view SMU’s Personal Data Protection Statement at http://www.smu.edu.sg/personal-data-protection. Should you wish at any time to withdraw your consent for the collection, use, and/or disclosure of your personal data after submitting using this Telegram Bot, please contact us at xplorationcrew@sa.smu.edu.sg ."
+            }
+        ],
+        "language": "none",
+        "x": 780,
+        "y": 860,
+        "wires": [
+            [
+                "bc8995bc9593719d"
+            ]
+        ]
+    },
+    {
+        "id": "47a2a35ad0a0c513",
+        "type": "link in",
+        "z": "a87b341c1947bfb2",
+        "name": "",
+        "links": [
+            "7fae7b0a9f5e348c"
+        ],
+        "x": 655,
+        "y": 860,
+        "wires": [
+            [
+                "044a155083cee857"
+            ]
+        ]
+    },
+    {
+        "id": "7a13c0da258680ac",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "/pdpa",
+        "info": "",
+        "x": 690,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "7fae7b0a9f5e348c",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "/pdpa",
+        "links": [
+            "47a2a35ad0a0c513"
+        ],
+        "x": 515,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "53fd5d920f313a16",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "",
+        "links": [
+            "154bd3f01ce93ae4"
+        ],
+        "x": 1055,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "bc8995bc9593719d",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "",
+        "links": [
+            "154bd3f01ce93ae4"
+        ],
+        "x": 895,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "d51adaa9e6e20855",
+        "type": "chatbot-params",
+        "z": "a87b341c1947bfb2",
+        "name": "add markdown",
+        "params": [
+            {
+                "platform": "telegram",
+                "name": "parseMode",
+                "value": "Markdown"
+            },
+            {
+                "platform": "telegram",
+                "name": "disableWebPagePreview",
+                "value": true
+            }
+        ],
+        "outputs": 1,
+        "x": 940,
+        "y": 760,
+        "wires": [
+            [
+                "53fd5d920f313a16"
+            ]
+        ]
+    },
+    {
+        "id": "35f99ee9c2be1b8b",
+        "type": "catch",
+        "z": "a87b341c1947bfb2",
+        "name": "todo: authorize user",
+        "scope": null,
+        "uncaught": false,
+        "x": 300,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a32eb6284a2d96e9",
+        "type": "catch",
+        "z": "a87b341c1947bfb2",
+        "name": "todo! add record to signups",
+        "scope": null,
+        "uncaught": false,
+        "x": 2230,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    }
+]
