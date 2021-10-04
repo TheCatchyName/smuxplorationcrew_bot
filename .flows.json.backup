@@ -84,30 +84,11 @@
         "wires": [
             [
                 "9ed5ca5a1ec8438a",
-                "3ae2cb1fd5835c74"
+                "6c713c605de85f50"
             ],
             [
                 "016f56730b2decde",
                 "c3ba7c7a363a3cee"
-            ]
-        ]
-    },
-    {
-        "id": "3ae2cb1fd5835c74",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "welcome",
-        "message": [
-            {
-                "message": "Welcome back, {{firstName}}!"
-            }
-        ],
-        "language": "none",
-        "x": 1600,
-        "y": 400,
-        "wires": [
-            [
-                "594ed82c6fe11e42"
             ]
         ]
     },
@@ -170,11 +151,11 @@
         "z": "a87b341c1947bfb2",
         "bot": "e9698b316b6bbdbc",
         "botProduction": "",
-        "x": 150,
-        "y": 420,
+        "x": 110,
+        "y": 660,
         "wires": [
             [
-                "1aa15878fa8cb82f"
+                "8c807706e4e0e414"
             ]
         ]
     },
@@ -401,7 +382,7 @@
         "y": 440,
         "wires": [
             [
-                "514d2caae512a466"
+                "6c713c605de85f50"
             ]
         ]
     },
@@ -425,7 +406,8 @@
         "links": [
             "594ed82c6fe11e42",
             "fb175c17bd951097",
-            "5218694552e9686b"
+            "5218694552e9686b",
+            "615524b78415fcc0"
         ],
         "x": 2195,
         "y": 300,
@@ -434,18 +416,6 @@
                 "2d1fd9907da7deed"
             ]
         ]
-    },
-    {
-        "id": "594ed82c6fe11e42",
-        "type": "link out",
-        "z": "a87b341c1947bfb2",
-        "name": "request commands",
-        "links": [
-            "cd19e85e934feaf3"
-        ],
-        "x": 1715,
-        "y": 400,
-        "wires": []
     },
     {
         "id": "fb175c17bd951097",
@@ -607,7 +577,8 @@
             "56225c5e7455a971",
             "4c9107a9dd15aebd",
             "53fd5d920f313a16",
-            "bc8995bc9593719d"
+            "bc8995bc9593719d",
+            "f5cdee4a9f14aeb1"
         ],
         "x": 2175,
         "y": 460,
@@ -1374,7 +1345,7 @@
         ],
         "language": "none",
         "x": 1170,
-        "y": 1040,
+        "y": 1020,
         "wires": [
             [
                 "41d3ecce3ef29371"
@@ -1472,7 +1443,7 @@
         "type": "debug",
         "z": "a87b341c1947bfb2",
         "name": "bar",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1601,7 +1572,8 @@
         "y": 1000,
         "wires": [
             [
-                "4fc5f57cf6965ce0"
+                "4fc5f57cf6965ce0",
+                "8c807706e4e0e414"
             ]
         ]
     },
@@ -1617,7 +1589,7 @@
         ],
         "language": "none",
         "x": 1380,
-        "y": 1040,
+        "y": 1020,
         "wires": [
             []
         ]
@@ -1633,8 +1605,8 @@
             }
         ],
         "language": "none",
-        "x": 970,
-        "y": 1040,
+        "x": 990,
+        "y": 1020,
         "wires": [
             [
                 "d31d5eb1d601c310"
@@ -1738,14 +1710,14 @@
         "type": "function",
         "z": "a87b341c1947bfb2",
         "name": "find utid in pairs",
-        "func": "if (flow.pairs.hasOwnProperty(msg.originalMessage.from.id)) {\n    msg.found = true;\n} else {\n    msg.found = false;\n}\nreturn msg;",
+        "func": "var dict = flow.get(\"pairs\");\nmsg.found = false;\ntry {\n    if (dict.hasOwnProperty(msg.originalMessage.from.id)) {\n        msg.found = true;\n        console.log(\"found\");\n    }\n} catch(e) {\n    console.log(e.message);\n}\nconsole.log(\"finally\");\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
-        "y": 1140,
+        "x": 480,
+        "y": 1160,
         "wires": [
             [
                 "9cfd9eb6ee3b5822"
@@ -1757,7 +1729,7 @@
         "type": "function",
         "z": "a87b341c1947bfb2",
         "name": "build pairs dict",
-        "func": "var dict = new Object();\nfor (var i = 0; i < msg.payload.length; i++) {\n    dict[msg.payload[i].fields.utid] = new Object();\n    dict[msg.payload[i].fields.utid].id = msg.payload[i].id;\n    dict[msg.payload[i].fields.utid].name = msg.payload[i].fields[\"Full Name\"];\n}\nconsole.log(\"here\");\nconsole.log(JSON.stringify(dict));\nmsg.payload = dict;\nreturn msg;",
+        "func": "var dict = new Object();\nfor (var i = 0; i < msg.payload.length; i++) {\n    dict[msg.payload[i].fields.utid] = new Object();\n    dict[msg.payload[i].fields.utid].id = msg.payload[i].id;\n    dict[msg.payload[i].fields.utid].name = msg.payload[i].fields[\"Full Name\"];\n}\n// console.log(\"here\");\n// console.log(JSON.stringify(dict));\nmsg.payload = dict;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1787,13 +1759,149 @@
             }
         ],
         "checkall": "true",
-        "repair": false,
+        "repair": true,
         "outputs": 2,
-        "x": 650,
-        "y": 1140,
+        "x": 630,
+        "y": 1160,
         "wires": [
-            [],
-            []
+            [
+                "1aa15878fa8cb82f"
+            ],
+            [
+                "e90293ac3bcecb12"
+            ]
         ]
+    },
+    {
+        "id": "6c713c605de85f50",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "welcome",
+        "message": [
+            {
+                "message": "Welcome, "
+            },
+            {
+                "message": "Hello, "
+            },
+            {
+                "message": "Howdy, "
+            }
+        ],
+        "language": "none",
+        "x": 1800,
+        "y": 400,
+        "wires": [
+            [
+                "7bc37a0d12f30e8f"
+            ]
+        ]
+    },
+    {
+        "id": "615524b78415fcc0",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "request commands",
+        "links": [
+            "cd19e85e934feaf3"
+        ],
+        "x": 2055,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "7bc37a0d12f30e8f",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "add name",
+        "func": "var dict = flow.get(\"pairs\");\nmsg.payload.content += dict[msg.originalMessage.from.id].name + \"!\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1940,
+        "y": 400,
+        "wires": [
+            [
+                "615524b78415fcc0"
+            ]
+        ]
+    },
+    {
+        "id": "e90293ac3bcecb12",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "sign up prompt",
+        "message": [
+            {
+                "message": "Hello {{firstName}}! Welcome to the SMUXploration Crew Bot! It seems like this is your first time, [please tap here to sign up](https://airtable.com/shrVCvhRsH701DBdl).\n\nThis is your unique Telegram code (do not share it with anyone!):"
+            }
+        ],
+        "language": "none",
+        "x": 1260,
+        "y": 1300,
+        "wires": [
+            [
+                "032f80bc7112a821"
+            ]
+        ]
+    },
+    {
+        "id": "032f80bc7112a821",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "tele code",
+        "message": [
+            {
+                "message": "```{{userId}}```"
+            }
+        ],
+        "language": "none",
+        "x": 1420,
+        "y": 1300,
+        "wires": [
+            [
+                "fd06cc132ebb529e"
+            ]
+        ]
+    },
+    {
+        "id": "fd06cc132ebb529e",
+        "type": "chatbot-params",
+        "z": "a87b341c1947bfb2",
+        "name": "add markdown",
+        "params": [
+            {
+                "platform": "telegram",
+                "name": "parseMode",
+                "value": "Markdown"
+            },
+            {
+                "platform": "telegram",
+                "name": "disableWebPagePreview",
+                "value": true
+            }
+        ],
+        "outputs": 1,
+        "x": 1580,
+        "y": 1300,
+        "wires": [
+            [
+                "f5cdee4a9f14aeb1"
+            ]
+        ]
+    },
+    {
+        "id": "f5cdee4a9f14aeb1",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "sign up end point",
+        "links": [
+            "154bd3f01ce93ae4"
+        ],
+        "x": 1695,
+        "y": 1300,
+        "wires": []
     }
 ]
