@@ -150,11 +150,12 @@
         "z": "a87b341c1947bfb2",
         "bot": "e9698b316b6bbdbc",
         "botProduction": "",
-        "x": 130,
+        "x": 90,
         "y": 1120,
         "wires": [
             [
-                "8c807706e4e0e414"
+                "7041c16ccf81de33",
+                "a7877f7b0225beb7"
             ]
         ]
     },
@@ -258,11 +259,11 @@
                 "command": "/pdpa"
             },
             {
-                "type": "anyCommand"
+                "type": "catchAll"
             }
         ],
         "outputs": 6,
-        "x": 640,
+        "x": 760,
         "y": 1040,
         "wires": [
             [
@@ -377,7 +378,7 @@
         "links": [
             "18789953b0cbafec"
         ],
-        "x": 815,
+        "x": 935,
         "y": 1000,
         "wires": []
     },
@@ -408,7 +409,7 @@
         "links": [
             "cd19e85e934feaf3"
         ],
-        "x": 815,
+        "x": 935,
         "y": 940,
         "wires": []
     },
@@ -492,7 +493,7 @@
         "links": [
             "ceb289c6398d70e5"
         ],
-        "x": 815,
+        "x": 935,
         "y": 1060,
         "wires": []
     },
@@ -696,11 +697,11 @@
         "id": "af06b4f599545231",
         "type": "link out",
         "z": "a87b341c1947bfb2",
-        "name": "all other commands",
+        "name": "all other inputs",
         "links": [
             "f3096bfec7a5bebc"
         ],
-        "x": 815,
+        "x": 935,
         "y": 1180,
         "wires": []
     },
@@ -1011,7 +1012,7 @@
         "links": [
             "fe79ef478e581439"
         ],
-        "x": 815,
+        "x": 935,
         "y": 1100,
         "wires": []
     },
@@ -1038,10 +1039,10 @@
         "id": "c9e4caf20fd06d9c",
         "type": "catch",
         "z": "a87b341c1947bfb2",
-        "name": "todo!",
+        "name": "todo: list all activities with nice format",
         "scope": null,
         "uncaught": false,
-        "x": 2630,
+        "x": 2720,
         "y": 800,
         "wires": [
             []
@@ -1145,7 +1146,7 @@
         "links": [
             "47a2a35ad0a0c513"
         ],
-        "x": 815,
+        "x": 935,
         "y": 1140,
         "wires": []
     },
@@ -1197,19 +1198,6 @@
             [
                 "53fd5d920f313a16"
             ]
-        ]
-    },
-    {
-        "id": "35f99ee9c2be1b8b",
-        "type": "catch",
-        "z": "a87b341c1947bfb2",
-        "name": "todo: authorize user",
-        "scope": null,
-        "uncaught": false,
-        "x": 430,
-        "y": 220,
-        "wires": [
-            []
         ]
     },
     {
@@ -1341,11 +1329,11 @@
         "topic": "",
         "payload": "{\"fields\":[\"utid\", \"Full Name\"],\"filterByFormula\":\"NOT({utid} = '')\"}",
         "payloadType": "json",
-        "x": 440,
+        "x": 260,
         "y": 100,
         "wires": [
             [
-                "75c0cec4b173ac57"
+                "3968cd0d85ed5ff2"
             ]
         ]
     },
@@ -1372,7 +1360,7 @@
         "type": "debug",
         "z": "a87b341c1947bfb2",
         "name": "bar",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1460,12 +1448,16 @@
         "type": "link in",
         "z": "a87b341c1947bfb2",
         "name": "trigger pairs refresh",
-        "links": [],
-        "x": 475,
-        "y": 60,
+        "links": [
+            "c449032fdcaf3df0",
+            "435f6cc7922f111e",
+            "788c63709f54599e"
+        ],
+        "x": 195,
+        "y": 160,
         "wires": [
             [
-                "75c0cec4b173ac57"
+                "3968cd0d85ed5ff2"
             ]
         ]
     },
@@ -1638,13 +1630,13 @@
         "type": "function",
         "z": "a87b341c1947bfb2",
         "name": "findutid in pairs",
-        "func": "var dict = flow.get(\"pairs\");\nmsg.found = false;\ntry {\n    if (dict.hasOwnProperty(msg.originalMessage.from.id)) {\n        msg.found = true;\n        console.log(\"found\");\n    }\n} catch(e) {\n    console.log(e.message);\n}\nconsole.log(\"finally\");\nreturn msg;",
+        "func": "var dict = flow.get(\"pairs\");\nmsg.found = false;\ntry {\n    if (dict.hasOwnProperty(msg.originalMessage.from.id)) {\n        msg.found = true;\n        // console.log(\"found\");\n    }\n} catch(e) {\n    console.log(e.message);\n}\n// console.log(\"finally\");\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
+        "x": 440,
         "y": 1120,
         "wires": [
             [
@@ -1689,7 +1681,7 @@
         "checkall": "true",
         "repair": true,
         "outputs": 2,
-        "x": 470,
+        "x": 590,
         "y": 1120,
         "wires": [
             [
@@ -1767,7 +1759,7 @@
             }
         ],
         "language": "none",
-        "x": 640,
+        "x": 760,
         "y": 1260,
         "wires": [
             [
@@ -1786,7 +1778,7 @@
             }
         ],
         "language": "none",
-        "x": 800,
+        "x": 920,
         "y": 1260,
         "wires": [
             [
@@ -1812,11 +1804,12 @@
             }
         ],
         "outputs": 1,
-        "x": 960,
+        "x": 1080,
         "y": 1260,
         "wires": [
             [
-                "f5cdee4a9f14aeb1"
+                "f5cdee4a9f14aeb1",
+                "788c63709f54599e"
             ]
         ]
     },
@@ -1828,7 +1821,7 @@
         "links": [
             "154bd3f01ce93ae4"
         ],
-        "x": 1075,
+        "x": 1235,
         "y": 1260,
         "wires": []
     },
@@ -1838,8 +1831,8 @@
         "z": "a87b341c1947bfb2",
         "name": "old user handling",
         "info": "",
-        "x": 790,
-        "y": 1640,
+        "x": 740,
+        "y": 1720,
         "wires": []
     },
     {
@@ -1856,6 +1849,134 @@
             [
                 "6c713c605de85f50"
             ]
+        ]
+    },
+    {
+        "id": "7aed42d856b3adc5",
+        "type": "debug",
+        "z": "a87b341c1947bfb2",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "7041c16ccf81de33",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "logger function",
+        "func": "msg.payload = JSON.stringify(msg.originalMessage, null, \" | \");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 880,
+        "wires": [
+            [
+                "7aed42d856b3adc5"
+            ]
+        ]
+    },
+    {
+        "id": "3968cd0d85ed5ff2",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "select params",
+        "func": "msg.payload = {\"fields\":[\"utid\", \"Full Name\"],\"filterByFormula\":\"NOT({utid} = '')\"};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 160,
+        "wires": [
+            [
+                "75c0cec4b173ac57"
+            ]
+        ]
+    },
+    {
+        "id": "a7877f7b0225beb7",
+        "type": "chatbot-rules",
+        "z": "a87b341c1947bfb2",
+        "name": "refresh?",
+        "rules": [
+            {
+                "type": "command",
+                "command": "/refresh"
+            },
+            {
+                "type": "catchAll"
+            }
+        ],
+        "outputs": 2,
+        "x": 260,
+        "y": 1120,
+        "wires": [
+            [
+                "435f6cc7922f111e"
+            ],
+            [
+                "8c807706e4e0e414"
+            ]
+        ]
+    },
+    {
+        "id": "435f6cc7922f111e",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "",
+        "links": [
+            "07d30cb3019b40fe"
+        ],
+        "x": 375,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "788c63709f54599e",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "",
+        "links": [
+            "07d30cb3019b40fe"
+        ],
+        "x": 1235,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "31178ee47cf081c8",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "note",
+        "info": "it will always pick the first record that matches the user's utid. all subsequent records must be manually cleared by an admin",
+        "x": 1390,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "4ed7cbe321f20aeb",
+        "type": "catch",
+        "z": "a87b341c1947bfb2",
+        "name": "todo: make nice date format",
+        "scope": null,
+        "uncaught": false,
+        "x": 2870,
+        "y": 620,
+        "wires": [
+            []
         ]
     }
 ]
