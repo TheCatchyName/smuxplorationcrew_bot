@@ -84,11 +84,30 @@
         "wires": [
             [
                 "9ed5ca5a1ec8438a",
-                "6c713c605de85f50"
+                "3ae2cb1fd5835c74"
             ],
             [
                 "016f56730b2decde",
                 "c3ba7c7a363a3cee"
+            ]
+        ]
+    },
+    {
+        "id": "3ae2cb1fd5835c74",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "welcome",
+        "message": [
+            {
+                "message": "Welcome back, {{firstName}}!"
+            }
+        ],
+        "language": "none",
+        "x": 1600,
+        "y": 400,
+        "wires": [
+            [
+                "594ed82c6fe11e42"
             ]
         ]
     },
@@ -406,8 +425,7 @@
         "links": [
             "594ed82c6fe11e42",
             "fb175c17bd951097",
-            "5218694552e9686b",
-            "615524b78415fcc0"
+            "5218694552e9686b"
         ],
         "x": 2195,
         "y": 300,
@@ -416,6 +434,18 @@
                 "2d1fd9907da7deed"
             ]
         ]
+    },
+    {
+        "id": "594ed82c6fe11e42",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "request commands",
+        "links": [
+            "cd19e85e934feaf3"
+        ],
+        "x": 1715,
+        "y": 400,
+        "wires": []
     },
     {
         "id": "fb175c17bd951097",
@@ -1571,8 +1601,7 @@
         "y": 1000,
         "wires": [
             [
-                "4fc5f57cf6965ce0",
-                "8c807706e4e0e414"
+                "4fc5f57cf6965ce0"
             ]
         ]
     },
@@ -1715,8 +1744,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 480,
-        "y": 1160,
+        "x": 500,
+        "y": 1140,
         "wires": [
             [
                 "9cfd9eb6ee3b5822"
@@ -1760,67 +1789,11 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 630,
-        "y": 1160,
+        "x": 650,
+        "y": 1140,
         "wires": [
             [],
             []
-        ]
-    },
-    {
-        "id": "6c713c605de85f50",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "welcome",
-        "message": [
-            {
-                "message": "Welcome, "
-            },
-            {
-                "message": "Hello, "
-            },
-            {
-                "message": "Howdy, "
-            }
-        ],
-        "language": "none",
-        "x": 1800,
-        "y": 400,
-        "wires": [
-            [
-                "7bc37a0d12f30e8f"
-            ]
-        ]
-    },
-    {
-        "id": "615524b78415fcc0",
-        "type": "link out",
-        "z": "a87b341c1947bfb2",
-        "name": "request commands",
-        "links": [
-            "cd19e85e934feaf3"
-        ],
-        "x": 2055,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "7bc37a0d12f30e8f",
-        "type": "function",
-        "z": "a87b341c1947bfb2",
-        "name": "add name",
-        "func": "msg.payload.content += flow.pairs[msg.originalMessage.from.id].name + \"!\"\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1940,
-        "y": 400,
-        "wires": [
-            [
-                "615524b78415fcc0"
-            ]
         ]
     }
 ]
