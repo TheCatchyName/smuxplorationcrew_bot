@@ -218,7 +218,7 @@
         "z": "a87b341c1947bfb2",
         "name": "first time user",
         "info": "",
-        "x": 1850,
+        "x": 2010,
         "y": 240,
         "wires": []
     },
@@ -727,7 +727,7 @@
         "y": 660,
         "wires": [
             [
-                "f6d037db44eaad80"
+                "eae286ea06837d7f"
             ],
             [
                 "cced5cd28e2d9c9a"
@@ -788,8 +788,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1910,
-        "y": 720,
+        "x": 750,
+        "y": 2000,
         "wires": [
             [
                 "83691eeac594bc02"
@@ -805,8 +805,8 @@
         "outputType": "array",
         "table": "Activities",
         "name": "Get activity record",
-        "x": 2110,
-        "y": 720,
+        "x": 950,
+        "y": 2000,
         "wires": [
             [
                 "f236c3b01769b7ab",
@@ -825,8 +825,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2300,
-        "y": 720,
+        "x": 1140,
+        "y": 2000,
         "wires": [
             [
                 "c9bda0fd36c1f44c"
@@ -846,8 +846,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2350,
-        "y": 660,
+        "x": 1190,
+        "y": 1940,
         "wires": []
     },
     {
@@ -861,8 +861,8 @@
             }
         ],
         "language": "none",
-        "x": 2630,
-        "y": 720,
+        "x": 1470,
+        "y": 2000,
         "wires": [
             [
                 "1b7d20f39f675840"
@@ -887,15 +887,13 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 2450,
-        "y": 720,
+        "x": 1290,
+        "y": 2000,
         "wires": [
             [
                 "66b31309b26cfd4b"
             ],
-            [
-                "cced5cd28e2d9c9a"
-            ]
+            []
         ]
     },
     {
@@ -940,8 +938,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2820,
-        "y": 720,
+        "x": 1660,
+        "y": 2000,
         "wires": [
             [
                 "6fd6f5e5192f41e5",
@@ -967,12 +965,10 @@
             }
         ],
         "outputs": 1,
-        "x": 3000,
-        "y": 720,
+        "x": 1840,
+        "y": 2000,
         "wires": [
-            [
-                "4c9107a9dd15aebd"
-            ]
+            []
         ]
     },
     {
@@ -983,8 +979,8 @@
         "links": [
             "154bd3f01ce93ae4"
         ],
-        "x": 3375,
-        "y": 620,
+        "x": 3195,
+        "y": 680,
         "wires": []
     },
     {
@@ -1000,8 +996,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2740,
-        "y": 780,
+        "x": 1580,
+        "y": 2060,
         "wires": []
     },
     {
@@ -1015,19 +1011,6 @@
         "x": 935,
         "y": 1100,
         "wires": []
-    },
-    {
-        "id": "c9e4caf20fd06d9c",
-        "type": "catch",
-        "z": "a87b341c1947bfb2",
-        "name": "todo: list all activities with nice format",
-        "scope": null,
-        "uncaught": false,
-        "x": 2380,
-        "y": 840,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "fe79ef478e581439",
@@ -1179,19 +1162,6 @@
             [
                 "53fd5d920f313a16"
             ]
-        ]
-    },
-    {
-        "id": "a32eb6284a2d96e9",
-        "type": "catch",
-        "z": "a87b341c1947bfb2",
-        "name": "todo! add record to signups",
-        "scope": null,
-        "uncaught": false,
-        "x": 2670,
-        "y": 660,
-        "wires": [
-            []
         ]
     },
     {
@@ -1354,33 +1324,6 @@
         "wires": []
     },
     {
-        "id": "6b17692cc914b18e",
-        "type": "change",
-        "z": "a87b341c1947bfb2",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "pairs",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1010,
-        "y": 100,
-        "wires": [
-            [
-                "57ea17e6dd74e495"
-            ]
-        ]
-    },
-    {
         "id": "57ea17e6dd74e495",
         "type": "change",
         "z": "a87b341c1947bfb2",
@@ -1399,7 +1342,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1200,
+        "x": 1040,
         "y": 100,
         "wires": [
             [
@@ -1420,7 +1363,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1400,
+        "x": 1240,
         "y": 100,
         "wires": []
     },
@@ -1630,7 +1573,7 @@
         "type": "function",
         "z": "a87b341c1947bfb2",
         "name": "build pairs dict",
-        "func": "var dict = new Object();\nfor (var i = 0; i < msg.payload.length; i++) {\n    dict[msg.payload[i].fields.utid] = new Object();\n    dict[msg.payload[i].fields.utid].id = msg.payload[i].id;\n    dict[msg.payload[i].fields.utid].name = msg.payload[i].fields[\"Full Name\"];\n}\n// console.log(\"here\");\n// console.log(JSON.stringify(dict));\nmsg.payload = dict;\nreturn msg;",
+        "func": "var dict = new Object();\nfor (var i = 0; i < msg.payload.length; i++) {\n    dict[msg.payload[i].fields.utid] = new Object();\n    dict[msg.payload[i].fields.utid].id = msg.payload[i].id;\n    dict[msg.payload[i].fields.utid].name = msg.payload[i].fields[\"Full Name\"];\n}\n// console.log(\"here\");\n// console.log(JSON.stringify(dict));\nflow.set(\"pairs\", dict);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1640,7 +1583,7 @@
         "y": 100,
         "wires": [
             [
-                "6b17692cc914b18e"
+                "57ea17e6dd74e495"
             ]
         ]
     },
@@ -1956,8 +1899,8 @@
         "name": "todo: make nice date format",
         "scope": null,
         "uncaught": false,
-        "x": 3050,
-        "y": 680,
+        "x": 2400,
+        "y": 840,
         "wires": [
             []
         ]
@@ -1992,7 +1935,7 @@
         "type": "function",
         "z": "a87b341c1947bfb2",
         "name": "select params",
-        "func": "msg.payload = {\"fields\":[\"Activity Type\",\"Activity Location\",\"Start Date Time\",\"edmlink\",\"uaid\"],\"filterByFormula\":\"{isopen}='1'\"};\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
+        "func": "msg.payload = {\"fields\":[\"Activity Type\",\"Activity Location\",\"Start Date Time\",\"edmlink\",\"uaid\",\"Activity Signups\"],\"filterByFormula\":\"{isopen}='1'\"};\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2029,17 +1972,18 @@
         "type": "function",
         "z": "a87b341c1947bfb2",
         "name": "build activities dict",
-        "func": "var dict = {};\nfor (var i = 0; i < msg.payload.length; i++) {\n    var key = msg.payload[i].fields.uaid;\n    dict[key] = {};\n    dict[key].dt = msg.payload[i].fields[\"Start Date Time\"];\n    dict[key].at = msg.payload[i].fields[\"Activity Type\"];\n    dict[key].al = msg.payload[i].fields[\"Activity Location\"];\n    dict[key].edm = msg.payload[i].fields.edmlink;\n    dict[key].id = \"rec\" + key;\n}\n// console.log(\"here\");\n// console.log(JSON.stringify(dict));\nmsg.payload = dict;\nreturn msg;",
+        "func": "var dict = {};\nfor (var i = 0; i < msg.payload.length; i++) {\n    var key = msg.payload[i].fields.uaid;\n    dict[key] = {};\n    dict[key].dt = msg.payload[i].fields[\"Start Date Time\"];\n    dict[key].at = msg.payload[i].fields[\"Activity Type\"];\n    dict[key].al = msg.payload[i].fields[\"Activity Location\"];\n    dict[key].edm = msg.payload[i].fields.edmlink;\n    dict[key].id = \"rec\" + key;\n    dict[key].signups =  msg.payload[i].fields[\"Activity Signups\"];\n}\n// console.log(\"here\");\n// console.log(JSON.stringify(dict));\nflow.set(\"activities\", dict);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1050,
-        "y": 180,
+        "x": 850,
+        "y": 260,
         "wires": [
             [
-                "f9ddf086161f810c"
+                "75f451ac161736bd",
+                "4b7b5e378beef5ca"
             ]
         ]
     },
@@ -2061,34 +2005,6 @@
         "wires": []
     },
     {
-        "id": "f9ddf086161f810c",
-        "type": "change",
-        "z": "a87b341c1947bfb2",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "activities",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1030,
-        "y": 260,
-        "wires": [
-            [
-                "4b7b5e378beef5ca",
-                "75f451ac161736bd"
-            ]
-        ]
-    },
-    {
         "id": "4b7b5e378beef5ca",
         "type": "change",
         "z": "a87b341c1947bfb2",
@@ -2107,7 +2023,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1380,
+        "x": 1120,
         "y": 260,
         "wires": [
             [
@@ -2128,7 +2044,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1570,
+        "x": 1310,
         "y": 260,
         "wires": []
     },
@@ -2143,8 +2059,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1330,
-        "y": 180,
+        "x": 1130,
+        "y": 200,
         "wires": [
             [
                 "0bf613885b8621bf"
@@ -2164,8 +2080,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1540,
-        "y": 180,
+        "x": 1340,
+        "y": 200,
         "wires": []
     },
     {
@@ -2254,12 +2170,11 @@
             }
         ],
         "language": "none",
-        "x": 1900,
-        "y": 640,
+        "x": 2660,
+        "y": 680,
         "wires": [
             [
-                "4c9107a9dd15aebd",
-                "eae286ea06837d7f"
+                "4c9107a9dd15aebd"
             ]
         ]
     },
@@ -2306,8 +2221,8 @@
         "outputType": "array",
         "table": "Activity Signups",
         "name": "add sign up",
-        "x": 2290,
-        "y": 580,
+        "x": 2430,
+        "y": 660,
         "wires": [
             [
                 "4d778f18fea208db"
@@ -2325,8 +2240,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2090,
-        "y": 600,
+        "x": 2130,
+        "y": 660,
         "wires": [
             [
                 "590f1a761e437246"
@@ -2363,6 +2278,16 @@
         "statusType": "auto",
         "x": 2260,
         "y": 460,
+        "wires": []
+    },
+    {
+        "id": "650d254eb6df5ae4",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "old activity handling",
+        "info": "",
+        "x": 750,
+        "y": 1940,
         "wires": []
     }
 ]
