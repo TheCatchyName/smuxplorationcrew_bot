@@ -213,26 +213,6 @@
         "wires": []
     },
     {
-        "id": "45460bf7f072c9b2",
-        "type": "comment",
-        "z": "a87b341c1947bfb2",
-        "name": "first time user",
-        "info": "",
-        "x": 2010,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "6666afb768027bbc",
-        "type": "comment",
-        "z": "a87b341c1947bfb2",
-        "name": "existing user",
-        "info": "",
-        "x": 1870,
-        "y": 380,
-        "wires": []
-    },
-    {
         "id": "1aa15878fa8cb82f",
         "type": "chatbot-rules",
         "z": "a87b341c1947bfb2",
@@ -562,7 +542,8 @@
             "4c9107a9dd15aebd",
             "53fd5d920f313a16",
             "bc8995bc9593719d",
-            "f5cdee4a9f14aeb1"
+            "f5cdee4a9f14aeb1",
+            "c3a6d1c665a45d33"
         ],
         "x": 2435,
         "y": 480,
@@ -727,7 +708,7 @@
         "y": 660,
         "wires": [
             [
-                "eae286ea06837d7f"
+                "0d5a4e7b914d45df"
             ],
             [
                 "cced5cd28e2d9c9a"
@@ -903,7 +884,7 @@
         "name": "no activity found",
         "message": [
             {
-                "message": "\n"
+                "message": ""
             }
         ],
         "language": "none",
@@ -919,7 +900,7 @@
         "id": "56225c5e7455a971",
         "type": "link out",
         "z": "a87b341c1947bfb2",
-        "name": "errot endpoint",
+        "name": "out",
         "links": [
             "154bd3f01ce93ae4"
         ],
@@ -979,8 +960,8 @@
         "links": [
             "154bd3f01ce93ae4"
         ],
-        "x": 3195,
-        "y": 680,
+        "x": 2795,
+        "y": 660,
         "wires": []
     },
     {
@@ -1374,7 +1355,8 @@
         "name": "trigger memory refresh",
         "links": [
             "435f6cc7922f111e",
-            "788c63709f54599e"
+            "788c63709f54599e",
+            "f70eaee05f6106fe"
         ],
         "x": 195,
         "y": 180,
@@ -1573,7 +1555,7 @@
         "type": "function",
         "z": "a87b341c1947bfb2",
         "name": "build pairs dict",
-        "func": "var dict = new Object();\nfor (var i = 0; i < msg.payload.length; i++) {\n    dict[msg.payload[i].fields.utid] = new Object();\n    dict[msg.payload[i].fields.utid].id = msg.payload[i].id;\n    dict[msg.payload[i].fields.utid].name = msg.payload[i].fields[\"Full Name\"];\n}\n// console.log(\"here\");\n// console.log(JSON.stringify(dict));\nflow.set(\"pairs\", dict);\nreturn msg;",
+        "func": "var dict = new Object();\nfor (var i = 0; i < msg.payload.length; i++) {\n    dict[msg.payload[i].fields.utid] = new Object();\n    dict[msg.payload[i].fields.utid].id = msg.payload[i].id;\n    dict[msg.payload[i].fields.utid].name = msg.payload[i].fields[\"Full Name\"];\n    dict[msg.payload[i].fields.utid].signups = msg.payload[i].fields[\"Activity (from Activity Signups)\"];\n}\n// console.log(\"here\");\n// console.log(JSON.stringify(dict));\nflow.set(\"pairs\", dict);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1816,7 +1798,7 @@
         "type": "function",
         "z": "a87b341c1947bfb2",
         "name": "select params",
-        "func": "msg.payload = {\"fields\":[\"utid\", \"Full Name\"],\"filterByFormula\":\"NOT({utid} = '')\"};\nreturn msg;",
+        "func": "msg.payload = {\"fields\":[\"utid\", \"Full Name\",\"Activity (from Activity Signups)\"],\"filterByFormula\":\"NOT({utid} = '')\"};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2072,7 +2054,7 @@
         "type": "debug",
         "z": "a87b341c1947bfb2",
         "name": "view flow.alist",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2115,7 +2097,7 @@
         "type": "function",
         "z": "a87b341c1947bfb2",
         "name": "craft message",
-        "func": "msg.payload.content += flow.get(\"alist\");\nreturn msg;",
+        "func": "var alist = flow.get(\"alist\");\n//replace join links with \"signed up\"\nvar usersignups = flow.get(\"pairs\")[msg.originalMessage.from.id].signups;\nif (usersignups != null) {\n    for (var i = 0; i < usersignups.length; i++) {\n        var tofind = \"/join\\\\_\" + usersignups[i].replace(\"rec\", \"\");\n        alist = alist.replace(tofind, \"_Signed Up_\");\n        // console.log(tofind);\n    }\n}\nmsg.payload.content += alist;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2163,18 +2145,19 @@
         "id": "f6d037db44eaad80",
         "type": "chatbot-message",
         "z": "a87b341c1947bfb2",
-        "name": "found, sign up",
+        "name": "success",
         "message": [
             {
-                "message": "found"
+                "message": "Sign up success!"
             }
         ],
         "language": "none",
-        "x": 2660,
-        "y": 680,
+        "x": 2640,
+        "y": 660,
         "wires": [
             [
-                "4c9107a9dd15aebd"
+                "4c9107a9dd15aebd",
+                "f70eaee05f6106fe"
             ]
         ]
     },
@@ -2221,11 +2204,12 @@
         "outputType": "array",
         "table": "Activity Signups",
         "name": "add sign up",
-        "x": 2430,
+        "x": 2450,
         "y": 660,
         "wires": [
             [
-                "4d778f18fea208db"
+                "4d778f18fea208db",
+                "f6d037db44eaad80"
             ]
         ]
     },
@@ -2240,7 +2224,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2130,
+        "x": 2230,
         "y": 660,
         "wires": [
             [
@@ -2267,7 +2251,7 @@
         "id": "2fbe87819d107708",
         "type": "debug",
         "z": "a87b341c1947bfb2",
-        "name": "",
+        "name": "error found!",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -2276,7 +2260,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2260,
+        "x": 2280,
         "y": 460,
         "wires": []
     },
@@ -2288,6 +2272,117 @@
         "info": "",
         "x": 750,
         "y": 1940,
+        "wires": []
+    },
+    {
+        "id": "0d5a4e7b914d45df",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "check if user already in",
+        "func": "msg.already = false;\n// var userrecid = flow.get(\"pairs\")[msg.originalMessage.from.id].id //get user's record id\nvar usersignups = flow.get(\"pairs\")[msg.originalMessage.from.id].signups; //get list of all signups for user\nvar activitysignups = flow.get(\"activities\")[msg.commandParams].signups; //get list of all signups for activity\n\n//if either user or activity has no signups, skip the check\nif (usersignups == null || activitysignups == null) {\n    return msg;\n}\n\n//iterate and compare all user's signups and activity's signups\nfor (var i = 0; i < usersignups.length; i++) {\n    for (var j = 0; j < activitysignups.length; j++) {\n        // console.log(usersignups[i] + \" vs \" + activitysignups[j]);\n        if (usersignups[i] == activitysignups[j]) {\n            msg.already = true;\n            return msg;\n        }\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1820,
+        "y": 660,
+        "wires": [
+            [
+                "a5f24069323e4c5c"
+            ]
+        ]
+    },
+    {
+        "id": "27e05c7cb08325c5",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "activity open",
+        "info": "",
+        "x": 1730,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "733954ec4162574a",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "activity not open",
+        "info": "",
+        "x": 1740,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "a5f24069323e4c5c",
+        "type": "switch",
+        "z": "a87b341c1947bfb2",
+        "name": "",
+        "property": "already",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": true,
+        "outputs": 2,
+        "x": 2010,
+        "y": 660,
+        "wires": [
+            [
+                "eae286ea06837d7f"
+            ],
+            [
+                "017d6255c546c344"
+            ]
+        ]
+    },
+    {
+        "id": "017d6255c546c344",
+        "type": "chatbot-message",
+        "z": "a87b341c1947bfb2",
+        "name": "already signed up!",
+        "message": [
+            {
+                "message": "You have already signed up for this activity! If you wish to withdraw from the activity, please contact the Team's exco."
+            }
+        ],
+        "language": "none",
+        "x": 2230,
+        "y": 720,
+        "wires": [
+            [
+                "c3a6d1c665a45d33"
+            ]
+        ]
+    },
+    {
+        "id": "c3a6d1c665a45d33",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "out",
+        "links": [
+            "154bd3f01ce93ae4"
+        ],
+        "x": 2395,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "f70eaee05f6106fe",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "request refresh",
+        "links": [
+            "07d30cb3019b40fe"
+        ],
+        "x": 2795,
+        "y": 600,
         "wires": []
     }
 ]
