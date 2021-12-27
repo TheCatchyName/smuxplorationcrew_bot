@@ -425,7 +425,7 @@
         "type": "function",
         "z": "a87b341c1947bfb2",
         "name": "userId to record",
-        "func": "var userId = msg.originalMessage.from.id;\nmsg.payload = {\"fields\":[\"update link\"], \"filterByFormula\":\"{utid}='\"+userId+\"'\"};\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
+        "func": "var userId = msg.originalMessage.from.id;\n// msg.payload = {\"fields\":[\"update link\"], \"filterByFormula\":\"{utid}='\"+userId+\"'\"};\n//make sure that only 1 is returned: the original record, where toUpdate is blank\nmsg.payload = {\"fields\":[\"update link\"], \"filterByFormula\":\"AND({toUpdate} = '', {utid}='\"+userId+\"')\"};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2254,13 +2254,13 @@
         "name": "error found!",
         "active": true,
         "tosidebar": true,
-        "console": false,
+        "console": true,
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2280,
+        "x": 2290,
         "y": 460,
         "wires": []
     },
@@ -2384,5 +2384,22 @@
         "x": 2795,
         "y": 600,
         "wires": []
+    },
+    {
+        "id": "4a53381b13df59a6",
+        "type": "function",
+        "z": "a87b341c1947bfb2",
+        "name": "userId to record",
+        "func": "var userId = msg.originalMessage.from.id;\n// msg.payload = {\"fields\":[\"update link\"], \"filterByFormula\":\"{utid}='\"+userId+\"'\"};\n//make sure that only 1 is returned: the original record, where toUpdate is blank\nmsg.payload = {\"fields\":[\"Full Name\", \"Student ID\", \"Gender\", \"Date of Birth\", \"Nationality\", \"Home Address\", \"Telegram Handle\", \"Mobile Number\", \"School\", \"Year of Matriculation\", \"Academic Email\"], \"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1520,
+        "y": 440,
+        "wires": [
+            []
+        ]
     }
 ]
