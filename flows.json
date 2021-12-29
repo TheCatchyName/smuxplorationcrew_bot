@@ -239,10 +239,14 @@
                 "command": "/pdpa"
             },
             {
+                "type": "command",
+                "command": "/refresh"
+            },
+            {
                 "type": "catchAll"
             }
         ],
-        "outputs": 6,
+        "outputs": 7,
         "x": 760,
         "y": 1040,
         "wires": [
@@ -260,6 +264,9 @@
             ],
             [
                 "7fae7b0a9f5e348c"
+            ],
+            [
+                "f8da7fa9e0f1c323"
             ],
             [
                 "af06b4f599545231"
@@ -390,7 +397,7 @@
             "cd19e85e934feaf3"
         ],
         "x": 935,
-        "y": 940,
+        "y": 960,
         "wires": []
     },
     {
@@ -474,7 +481,7 @@
             "ceb289c6398d70e5"
         ],
         "x": 935,
-        "y": 1060,
+        "y": 1040,
         "wires": []
     },
     {
@@ -683,7 +690,7 @@
             "f3096bfec7a5bebc"
         ],
         "x": 935,
-        "y": 1180,
+        "y": 1200,
         "wires": []
     },
     {
@@ -990,7 +997,7 @@
             "fe79ef478e581439"
         ],
         "x": 935,
-        "y": 1100,
+        "y": 1080,
         "wires": []
     },
     {
@@ -1092,7 +1099,7 @@
             "47a2a35ad0a0c513"
         ],
         "x": 935,
-        "y": 1140,
+        "y": 1120,
         "wires": []
     },
     {
@@ -1356,14 +1363,15 @@
         "links": [
             "435f6cc7922f111e",
             "788c63709f54599e",
-            "f70eaee05f6106fe"
+            "f70eaee05f6106fe",
+            "21cb81522cf4875f",
+            "f8da7fa9e0f1c323"
         ],
-        "x": 195,
+        "x": 55,
         "y": 180,
         "wires": [
             [
-                "3968cd0d85ed5ff2",
-                "5785fb098293c70e"
+                "d94cf8975ff64981"
             ]
         ]
     },
@@ -1762,7 +1770,7 @@
         "type": "debug",
         "z": "a87b341c1947bfb2",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2218,7 +2226,7 @@
         "type": "function",
         "z": "a87b341c1947bfb2",
         "name": "sign up for activity",
-        "func": "var idpairs = flow.get(\"pairs\");\nvar partid = idpairs[msg.originalMessage.from.id].id;\nconsole.log(partid);\nconsole.log(msg.commandParams);\nmsg.payload = {\"Status\": \"Signed up\", \"Activity\": [\"rec\" + msg.commandParams], \"Participant Name\": [partid]};\nreturn msg;",
+        "func": "var idpairs = flow.get(\"pairs\");\nvar partid = idpairs[msg.originalMessage.from.id].id;\nconsole.log(partid);\nconsole.log(msg.commandParams);\nmsg.payload = {\"Activity\": [\"rec\" + msg.commandParams], \"Participant Name\": [partid]};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2401,5 +2409,52 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "99f214a659bb62e0",
+        "type": "comment",
+        "z": "a87b341c1947bfb2",
+        "name": "refresher function",
+        "info": "",
+        "x": 260,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "d94cf8975ff64981",
+        "type": "delay",
+        "z": "a87b341c1947bfb2",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "30",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "x": 250,
+        "y": 180,
+        "wires": [
+            [
+                "3968cd0d85ed5ff2",
+                "5785fb098293c70e"
+            ]
+        ]
+    },
+    {
+        "id": "f8da7fa9e0f1c323",
+        "type": "link out",
+        "z": "a87b341c1947bfb2",
+        "name": "/refresh",
+        "links": [
+            "07d30cb3019b40fe"
+        ],
+        "x": 935,
+        "y": 1160,
+        "wires": []
     }
 ]
