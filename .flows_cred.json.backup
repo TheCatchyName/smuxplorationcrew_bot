@@ -1,9 +1,3 @@
 {
-    "9ef52be8e50ac20f": {
-        "apiKey": "${API_KEY}",
-        "baseId": "${BASE_ID}"
-    },
-    "e9698b316b6bbdbc": {
-        "token": "${BOT_TOKEN}"
-    }
+    "$": "878a4162cdd6aaa13ebac5c7bbeb0bf4XwAPdZbZW67zx9KsuJqgPpE5ITIYp5oBoJLzDFfLfykGPJRjUmTiCJVG1WLnALx01fJDLRoliWFtYwxP1E8OjocSUBqCxRJKSb796Hi9euXuGtuWeC+AuzG6tn9jcz12C5WxBWvIh2QPQTMTx1RRT+TFbR4WmvIF+0CSWyp8q1ByG7uMB9jb2IjnokGLlIL2ZJg+34sxmTOZm8eecnQ6cJt4Q/qtgGjueH1FiPf5FIuzorfORAPc+ih/GxIn"
 }
