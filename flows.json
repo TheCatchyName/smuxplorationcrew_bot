@@ -163,7 +163,7 @@
         "name": "commands message",
         "message": [
             {
-                "message": "Please use the following commands:\n/update - view and update your personal particulars\n/join - sign up for an activity/view activities\n/faq - view frequently asked questions\n/proficiencies - view/update your skill proficiencies"
+                "message": "Please use the following commands:\n/update - view and update your personal particulars\n/join - sign up for an activity/view activities\n/faq - view frequently asked questions\n/proficiencies - view/update your skill proficiencies\n/refresh - refreshes the bot if your changes are not reflected"
             }
         ],
         "language": "none",
@@ -673,7 +673,7 @@
         "name": "faq message",
         "message": [
             {
-                "message": "*How do I withdraw from an activity?*\nPlease contact an exco member from the respective team to withdraw from an activity.\n\n*PDPA Information*\n/pdpa\n\nContact @marcusgohsh for any further questions about this bot and its usage, or if you spot a bug :ladybug:."
+                "message": "*How do I withdraw from an activity?*\nPlease contact an exco member from the respective team to withdraw from an activity.\n\n*Why can't I sign up for an activity?*\nIf you see a proficiency command, it means that you have to indicate your skill proficiency declaration first before signing up. If you've already done so and still can't sign up, try using /refresh then /join again.\n\n*PDPA Information*\n/pdpa\n\n*Something's broken!*\nContact @marcusgohsh for any further questions about this bot and its usage, or if you spot a bug :ladybug:."
             }
         ],
         "language": "none",

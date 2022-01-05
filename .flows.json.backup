@@ -163,7 +163,7 @@
         "name": "commands message",
         "message": [
             {
-                "message": "Please use the following commands:\n/update - view and update your personal particulars\n/join - sign up for an activity/view activities\n/faq - view frequently asked questions\n/proficiencies - view/update your skill proficiencies"
+                "message": "Please use the following commands:\n/update - view and update your personal particulars\n/join - sign up for an activity/view activities\n/faq - view frequently asked questions\n/proficiencies - view/update your skill proficiencies\n/refresh - refreshes the bot if your changes are not reflected"
             }
         ],
         "language": "none",
@@ -673,7 +673,7 @@
         "name": "faq message",
         "message": [
             {
-                "message": "*How do I withdraw from an activity?*\nPlease contact an exco member from the respective team to withdraw from an activity.\n\n*PDPA Information*\n/pdpa\n\nContact @marcusgohsh for any further questions about this bot and its usage, or if you spot a bug :ladybug:."
+                "message": "*How do I withdraw from an activity?*\nPlease contact an exco member from the respective team to withdraw from an activity.\n\n*Why can't I sign up for an activity?*\nIf you see a proficiency command, it means that you have to indicate your skill proficiency declaration first before signing up. If you've already done so and still can't sign up, try using /refresh then /join again.\n\n*PDPA Information*\n/pdpa\n\nContact @marcusgohsh for any further questions about this bot and its usage, or if you spot a bug :ladybug:."
             }
         ],
         "language": "none",
@@ -1237,19 +1237,6 @@
         "x": 1215,
         "y": 1300,
         "wires": []
-    },
-    {
-        "id": "879b0da74dc36e23",
-        "type": "catch",
-        "z": "ce49487b198a0e71",
-        "name": "todo: make nice date format",
-        "scope": null,
-        "uncaught": false,
-        "x": 2400,
-        "y": 840,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "ec96d1faab3be10c",
@@ -2003,7 +1990,7 @@
         "name": "tailored activity list",
         "info": "",
         "x": 2370,
-        "y": 800,
+        "y": 840,
         "wires": []
     },
     {
@@ -2469,7 +2456,6 @@
         "y": 1900,
         "wires": [
             [
-                "c5f32582870d8bdf",
                 "fa6da40f5aa18129"
             ]
         ]
@@ -2492,39 +2478,6 @@
                 "d968e794c6c68304"
             ]
         ]
-    },
-    {
-        "id": "1cf28b93293a6555",
-        "type": "chatbot-message",
-        "z": "ce49487b198a0e71",
-        "name": "placeholder",
-        "message": [
-            {
-                "message": "placeholder"
-            }
-        ],
-        "language": "none",
-        "x": 1430,
-        "y": 2000,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c5f32582870d8bdf",
-        "type": "debug",
-        "z": "ce49487b198a0e71",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1380,
-        "y": 1960,
-        "wires": []
     },
     {
         "id": "fa6da40f5aa18129",
