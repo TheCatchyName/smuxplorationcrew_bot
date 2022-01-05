@@ -1602,7 +1602,7 @@
         "type": "function",
         "z": "ce49487b198a0e71",
         "name": "check if user already in",
-        "func": "msg.already = false;\n// var userrecid = flow.get(\"pairs\")[msg.originalMessage.from.id].id //get user's record id\nvar usersignups = flow.get(\"pairs\")[msg.originalMessage.from.id].signups; //get list of all signups for user\nvar activitysignups = flow.get(\"activities\")[msg.commandParams].signups; //get list of all signups for activity\n\n//if either user or activity has no signups, skip the check\nif (usersignups == null || activitysignups == null) {\n    return msg;\n}\n\n//iterate and compare all user's signups and activity's signups\nfor (var i = 0; i < usersignups.length; i++) {\n    for (var j = 0; j < activitysignups.length; j++) {\n        // console.log(usersignups[i] + \" vs \" + activitysignups[j]);\n        if (usersignups[i] == activitysignups[j]) {\n            msg.already = true;\n            return msg;\n        }\n    }\n}\nreturn msg;",
+        "func": "msg.already = false;\n// var userrecid = flow.get(\"pairs\")[msg.originalMessage.from.id].id //get user's record id\nvar usersignups = flow.get(\"pairs\")[msg.originalMessage.from.id].signups; //get list of all signups for user\nvar activitysignups = flow.get(\"activities\")[msg.commandParams].signups; //get list of all signups for activity\n\n//if either user or activity has no signups, skip the check\nif (usersignups == null || activitysignups == null) {\n    return msg;\n}\n\n// //iterate and compare all user's signups and activity's signups\n// for (var i = 0; i < usersignups.length; i++) {\n//     for (var j = 0; j < activitysignups.length; j++) {\n//         console.log(usersignups[i] + \" vs \" + activitysignups[j]);\n//         if (usersignups[i] == activitysignups[j]) {\n//             msg.already = true;\n//             return msg;\n//         }\n//     }\n// }\n//iterate through all of user's signups. if there is a match with the commandParams, then reject the signup.\nvar toCompare = \"rec\" + msg.commandParams; //adds rec to the command params so it can be compared with the signup list\nfor (var i = 0; i < usersignups.length; i++) {\n    console.log(usersignups[i] + \" vs \" + toCompare);\n    if (usersignups[i] == toCompare) {\n        msg.already = true;\n        return msg;\n    } \n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1764,7 +1764,7 @@
         "id": "ce53d75e5c19b459",
         "type": "link out",
         "z": "ce49487b198a0e71",
-        "name": "/wpt",
+        "name": "/waterproficiency",
         "links": [
             "b585969ac120096e"
         ],
@@ -1848,9 +1848,9 @@
         "id": "d0d99d814c6bcd08",
         "type": "comment",
         "z": "ce49487b198a0e71",
-        "name": "/wpt",
+        "name": "/waterproficiency",
         "info": "",
-        "x": 950,
+        "x": 980,
         "y": 1460,
         "wires": []
     },
