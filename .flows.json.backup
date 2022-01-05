@@ -1,22 +1,17 @@
 [
     {
-        "id": "a87b341c1947bfb2",
+        "id": "ce49487b198a0e71",
         "type": "tab",
         "label": "SMUX Bot",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "9ef52be8e50ac20f",
-        "type": "airtable",
-        "name": "SMUX DBMS"
-    },
-    {
         "id": "e9698b316b6bbdbc",
         "type": "chatbot-telegram-node",
-        "botname": "${BOT_NAME}",
+        "botname": "smuxplorationcrew_bot",
         "usernames": "",
-        "token": "${BOT_TOKEN}",
+        "token": "2032795926:AAGa2NGH8DqdA0QRepMmnlFGr7kau3ZIvWM",
         "providerToken": "",
         "polling": "1000",
         "store": "",
@@ -26,148 +21,35 @@
         "connectMode": "polling"
     },
     {
-        "id": "f428f44dd803fdda",
+        "id": "10cb1b39c1f5f855",
         "type": "airtable",
-        "name": "SMUX DBMS v2"
+        "name": "SMUX DBMS V2"
     },
     {
-        "id": "4ece81d070da93a1",
-        "type": "airtable out",
-        "z": "a87b341c1947bfb2",
-        "airtable": "9ef52be8e50ac20f",
-        "operation": "select",
-        "outputType": "array",
-        "table": "Members",
-        "name": "Get user record",
-        "x": 940,
-        "y": 1800,
-        "wires": [
-            [
-                "6f91f3d280a0f809"
-            ]
-        ]
+        "id": "b3d486671ef39bcb",
+        "type": "airtable",
+        "name": "SMUX DBMS V2"
     },
     {
-        "id": "514d2caae512a466",
-        "type": "function",
-        "z": "a87b341c1947bfb2",
-        "name": "userId to record",
-        "func": "var userId = msg.originalMessage.from.id;\nmsg.payload = {\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 1800,
-        "wires": [
-            [
-                "4ece81d070da93a1"
-            ]
-        ]
-    },
-    {
-        "id": "8d16b7af45cde803",
-        "type": "switch",
-        "z": "a87b341c1947bfb2",
-        "name": "check if has fields",
-        "property": "newUser",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "false"
-            },
-            {
-                "t": "true"
-            }
-        ],
-        "checkall": "true",
-        "repair": true,
-        "outputs": 2,
-        "x": 1350,
-        "y": 1800,
-        "wires": [
-            [
-                "9ed5ca5a1ec8438a"
-            ],
-            [
-                "016f56730b2decde",
-                "c3ba7c7a363a3cee"
-            ]
-        ]
-    },
-    {
-        "id": "c3ba7c7a363a3cee",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "sign up prompt",
-        "message": [
-            {
-                "message": "Hello {{firstName}}! Welcome to the SMUXploration Crew Bot! It seems like this is your first time, [please tap here to sign up](https://airtable.com/shrVCvhRsH701DBdl).\n\nThis is your unique Telegram code (do not share it with anyone!):"
-            }
-        ],
-        "language": "none",
-        "x": 1560,
-        "y": 1660,
-        "wires": [
-            [
-                "d6e525d6b003bfd6"
-            ]
-        ]
-    },
-    {
-        "id": "9ed5ca5a1ec8438a",
-        "type": "debug",
-        "z": "a87b341c1947bfb2",
-        "name": "switch output 1",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1560,
-        "y": 1620,
-        "wires": []
-    },
-    {
-        "id": "016f56730b2decde",
-        "type": "debug",
-        "z": "a87b341c1947bfb2",
-        "name": "switch output 2",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1580,
-        "y": 1800,
-        "wires": []
-    },
-    {
-        "id": "50996036bfc84db0",
+        "id": "0566fc6538882ac0",
         "type": "chatbot-telegram-receive",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "bot": "e9698b316b6bbdbc",
         "botProduction": "",
         "x": 90,
         "y": 1120,
         "wires": [
             [
-                "7041c16ccf81de33",
-                "a7877f7b0225beb7"
+                "b73fad9b9285ce66",
+                "ad489de7409c5700",
+                "923d9741b3036dad"
             ]
         ]
     },
     {
-        "id": "c782b6880de1c17d",
+        "id": "9044bea29df53131",
         "type": "chatbot-telegram-send",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "bot": "e9698b316b6bbdbc",
         "botProduction": "",
         "track": true,
@@ -181,46 +63,9 @@
         ]
     },
     {
-        "id": "6f91f3d280a0f809",
-        "type": "function",
-        "z": "a87b341c1947bfb2",
-        "name": "process airtable result",
-        "func": "if (msg.payload.length != 0) {\n    msg.userData = msg.payload[0];\n    msg.newUser = false;\n    msg.userDataMsg = JSON.stringify(msg.userData.fields, null, \"x \");\n} else {\n    msg.newUser = true;\n}\n\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1140,
-        "y": 1800,
-        "wires": [
-            [
-                "8d16b7af45cde803",
-                "f7675537a9afce93"
-            ]
-        ]
-    },
-    {
-        "id": "f7675537a9afce93",
-        "type": "debug",
-        "z": "a87b341c1947bfb2",
-        "name": "airtable output",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1340,
-        "y": 1720,
-        "wires": []
-    },
-    {
-        "id": "1aa15878fa8cb82f",
+        "id": "31f82aa861a8540e",
         "type": "chatbot-rules",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "Message filter",
         "rules": [
             {
@@ -245,7 +90,7 @@
             },
             {
                 "type": "command",
-                "command": "/refresh"
+                "command": "/wpt"
             },
             {
                 "type": "catchAll"
@@ -256,32 +101,32 @@
         "y": 1040,
         "wires": [
             [
-                "fb175c17bd951097"
+                "eb56112bb03d76e0"
             ],
             [
-                "ce4f9657c9bd5433"
+                "044e02b5716b9bc8"
             ],
             [
-                "a8f7b1cd805ad9e8"
+                "ce361261702884fa"
             ],
             [
-                "b423a03108b95589"
+                "27e8c28d0a3f8769"
             ],
             [
-                "7fae7b0a9f5e348c"
+                "23af18058270dfac"
             ],
             [
-                "f8da7fa9e0f1c323"
+                "ce53d75e5c19b459"
             ],
             [
-                "af06b4f599545231"
+                "f900e418a189560b"
             ]
         ]
     },
     {
-        "id": "1a67a793fe52b32a",
+        "id": "9e0175732c29d964",
         "type": "comment",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "/start",
         "info": "",
         "x": 950,
@@ -289,13 +134,13 @@
         "wires": []
     },
     {
-        "id": "2d1fd9907da7deed",
+        "id": "92cd7d957fadcf99",
         "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "commands message",
         "message": [
             {
-                "message": "Please use the following commands:\n/update - update your personal particulars\n/join - sign up for an activity/view activities\n/faq - view frequently asked questions"
+                "message": "Please use the following commands:\n/update - view ad update your personal particulars\n/join - sign up for an activity/view activities\n/faq - view frequently asked questions"
             }
         ],
         "language": "none",
@@ -303,14 +148,14 @@
         "y": 360,
         "wires": [
             [
-                "4dc0540c47fe580e"
+                "de1435846f9f8f91"
             ]
         ]
     },
     {
-        "id": "5de05c89711e69c6",
+        "id": "70edde6cc4eafec7",
         "type": "comment",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "for joining activities",
         "info": "",
         "x": 990,
@@ -318,97 +163,52 @@
         "wires": []
     },
     {
-        "id": "d6e525d6b003bfd6",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "tele code",
-        "message": [
-            {
-                "message": "```{{userId}}```"
-            }
-        ],
-        "language": "none",
-        "x": 1740,
-        "y": 1660,
-        "wires": [
-            [
-                "a9256aef9c3e81f3"
-            ]
-        ]
-    },
-    {
-        "id": "a9256aef9c3e81f3",
-        "type": "chatbot-params",
-        "z": "a87b341c1947bfb2",
-        "name": "add markdown",
-        "params": [
-            {
-                "platform": "telegram",
-                "name": "parseMode",
-                "value": "Markdown"
-            },
-            {
-                "platform": "telegram",
-                "name": "disableWebPagePreview",
-                "value": true
-            }
-        ],
-        "outputs": 1,
-        "x": 1900,
-        "y": 1660,
-        "wires": [
-            [
-                "fa6dd98fcf431af3"
-            ]
-        ]
-    },
-    {
-        "id": "ce4f9657c9bd5433",
+        "id": "044e02b5716b9bc8",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "/start",
         "links": [
-            "18789953b0cbafec"
+            "b2cc1fd8d4ac46ab"
         ],
         "x": 935,
         "y": 1000,
         "wires": []
     },
     {
-        "id": "cd19e85e934feaf3",
+        "id": "1daeaacca532cc6d",
         "type": "link in",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "commands message",
         "links": [
             "594ed82c6fe11e42",
-            "fb175c17bd951097",
-            "5218694552e9686b",
-            "615524b78415fcc0"
+            "eb56112bb03d76e0",
+            "c65dc10d572c8628",
+            "3a68be5fa9c1e998"
         ],
         "x": 915,
         "y": 360,
         "wires": [
             [
-                "2d1fd9907da7deed"
+                "92cd7d957fadcf99"
             ]
         ]
     },
     {
-        "id": "fb175c17bd951097",
+        "id": "eb56112bb03d76e0",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "/help",
         "links": [
-            "cd19e85e934feaf3"
+            "1daeaacca532cc6d"
         ],
         "x": 935,
         "y": 960,
         "wires": []
     },
     {
-        "id": "aea2fb53c19f88ad",
+        "id": "50110548e3f9978a",
         "type": "comment",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "/help",
         "info": "",
         "x": 950,
@@ -416,10 +216,10 @@
         "wires": []
     },
     {
-        "id": "bb3aaa74a63775aa",
+        "id": "463c186ae99ad92f",
         "type": "airtable out",
-        "z": "a87b341c1947bfb2",
-        "airtable": "f428f44dd803fdda",
+        "z": "ce49487b198a0e71",
+        "airtable": "b3d486671ef39bcb",
         "operation": "select",
         "outputType": "array",
         "table": "Members",
@@ -428,16 +228,16 @@
         "y": 560,
         "wires": [
             [
-                "b8066f8207efc5a3"
+                "80dfbc49e688e4ab"
             ]
         ]
     },
     {
-        "id": "f2f3b752f7706aed",
+        "id": "91bcf240ec8cce21",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "userId to record",
-        "func": "var userId = msg.originalMessage.from.id;\n// msg.payload = {\"fields\":[\"update link\"], \"filterByFormula\":\"{utid}='\"+userId+\"'\"};\n//make sure that only 1 is returned: the original record, where toUpdate is blank\nmsg.payload = {\"fields\":[\"update link\"], \"filterByFormula\":\"AND({toUpdate} = '', {utid}='\"+userId+\"')\"};\nreturn msg;",
+        "func": "var userId = msg.originalMessage.from.id;\nmsg.payload = {\"fields\":[\"update link\"], \"filterByFormula\":\"{utid}='\"+userId+\"'\"};\n//make sure that only 1 is returned: the original record, where toUpdate is blank\n// msg.payload = {\"fields\":[\"update link\"], \"filterByFormula\":\"AND({toUpdate} = '', {utid}='\"+userId+\"')\"};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -447,14 +247,14 @@
         "y": 560,
         "wires": [
             [
-                "bb3aaa74a63775aa"
+                "463c186ae99ad92f"
             ]
         ]
     },
     {
-        "id": "bacde1f6040de05e",
+        "id": "0a44eebc4f433a0c",
         "type": "comment",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "/update",
         "info": "",
         "x": 950,
@@ -462,37 +262,37 @@
         "wires": []
     },
     {
-        "id": "ceb289c6398d70e5",
+        "id": "abc8572403e98d18",
         "type": "link in",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "update",
         "links": [
-            "a8f7b1cd805ad9e8"
+            "ce361261702884fa"
         ],
         "x": 915,
         "y": 560,
         "wires": [
             [
-                "f2f3b752f7706aed"
+                "91bcf240ec8cce21"
             ]
         ]
     },
     {
-        "id": "a8f7b1cd805ad9e8",
+        "id": "ce361261702884fa",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "/update",
         "links": [
-            "ceb289c6398d70e5"
+            "abc8572403e98d18"
         ],
         "x": 935,
         "y": 1040,
         "wires": []
     },
     {
-        "id": "b8066f8207efc5a3",
+        "id": "80dfbc49e688e4ab",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "get update link",
         "func": "if (msg.payload.length != 0) {\n    msg.userData = msg.payload[0];\n    msg.newUser = false;\n} else {\n    msg.newUser = true;\n}\n\nmsg.updateLink = JSON.stringify(msg.userData.fields).split(\"\\\"\")[3];\n// console.log(msg.updateLink)\nreturn msg;",
         "outputs": 1,
@@ -504,14 +304,14 @@
         "y": 560,
         "wires": [
             [
-                "4b36c8ef14e9873e"
+                "67886e47295156fc"
             ]
         ]
     },
     {
-        "id": "4b36c8ef14e9873e",
+        "id": "67886e47295156fc",
         "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "placeholder",
         "message": [
             {
@@ -523,76 +323,65 @@
         "y": 560,
         "wires": [
             [
-                "304f3f78dfff3a62",
-                "769d8e06beeb87ed"
+                "72dc836e8b9d1f07",
+                "52f93ed66f837356"
             ]
         ]
     },
     {
-        "id": "fa6dd98fcf431af3",
-        "type": "link out",
-        "z": "a87b341c1947bfb2",
-        "name": "sign up end point",
-        "links": [
-            "154bd3f01ce93ae4"
-        ],
-        "x": 2015,
-        "y": 1660,
-        "wires": []
-    },
-    {
-        "id": "154bd3f01ce93ae4",
+        "id": "c61e4ab1bf95a764",
         "type": "link in",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "tele endpoint sender",
         "links": [
-            "fa6dd98fcf431af3",
-            "4dc0540c47fe580e",
-            "d3f3e9e14e3687e5",
+            "90f9d347aa5d13d3",
+            "de1435846f9f8f91",
+            "9b9e6c23a802d445",
             "779668e31c92bef0",
-            "56225c5e7455a971",
-            "4c9107a9dd15aebd",
-            "53fd5d920f313a16",
-            "bc8995bc9593719d",
-            "f5cdee4a9f14aeb1",
-            "c3a6d1c665a45d33"
+            "2d3efe6758e51dbe",
+            "687f5203d955bd74",
+            "125a40fc3e097a6a",
+            "14e144e49a67babb",
+            "e4e574687dc6e3de",
+            "019ec0e431a666d9",
+            "a034d2a7a9b895bb"
         ],
         "x": 2435,
         "y": 480,
         "wires": [
             [
-                "c782b6880de1c17d"
+                "9044bea29df53131"
             ]
         ]
     },
     {
-        "id": "4dc0540c47fe580e",
+        "id": "de1435846f9f8f91",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "commands end point",
         "links": [
-            "154bd3f01ce93ae4"
+            "c61e4ab1bf95a764"
         ],
         "x": 1195,
         "y": 360,
         "wires": []
     },
     {
-        "id": "d3f3e9e14e3687e5",
+        "id": "9b9e6c23a802d445",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "update endpoint",
         "links": [
-            "154bd3f01ce93ae4"
+            "c61e4ab1bf95a764"
         ],
         "x": 2095,
         "y": 560,
         "wires": []
     },
     {
-        "id": "304f3f78dfff3a62",
+        "id": "72dc836e8b9d1f07",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "craft message",
         "func": "msg.payload.content = \"[Tap here](\" + msg.updateLink + \") to update your personal particulars.\"\nreturn msg;",
         "outputs": 1,
@@ -604,14 +393,14 @@
         "y": 560,
         "wires": [
             [
-                "49a22934c0132de8"
+                "c6c298227fc184ef"
             ]
         ]
     },
     {
-        "id": "49a22934c0132de8",
+        "id": "c6c298227fc184ef",
         "type": "chatbot-params",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "add markdown",
         "params": [
             {
@@ -630,14 +419,14 @@
         "y": 560,
         "wires": [
             [
-                "d3f3e9e14e3687e5"
+                "9b9e6c23a802d445"
             ]
         ]
     },
     {
-        "id": "769d8e06beeb87ed",
+        "id": "52f93ed66f837356",
         "type": "debug",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "here!",
         "active": false,
         "tosidebar": true,
@@ -652,9 +441,9 @@
         "wires": []
     },
     {
-        "id": "f0a06b14da9dac27",
+        "id": "85c767cfb96dbe77",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "command processing",
         "func": "//takes any commands and splits it to command and params\nmsg.userId = msg.payload.chatId;\nmsg.commandParams = null;\nmsg.command = msg.payload.content.split(\"_\")[0];\nmsg.commandParams = msg.payload.content.split(\"_\")[1];\nreturn msg;",
         "outputs": 1,
@@ -666,42 +455,42 @@
         "y": 680,
         "wires": [
             [
-                "1cbb2bb19e0fcf5f"
+                "3e3d8c1f17c6c8f5"
             ]
         ]
     },
     {
-        "id": "f3096bfec7a5bebc",
+        "id": "91e29d19fd7aae79",
         "type": "link in",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "command processing out",
         "links": [
-            "af06b4f599545231"
+            "f900e418a189560b"
         ],
         "x": 915,
         "y": 680,
         "wires": [
             [
-                "f0a06b14da9dac27"
+                "85c767cfb96dbe77"
             ]
         ]
     },
     {
-        "id": "af06b4f599545231",
+        "id": "f900e418a189560b",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "all other inputs",
         "links": [
-            "f3096bfec7a5bebc"
+            "91e29d19fd7aae79"
         ],
         "x": 935,
         "y": 1200,
         "wires": []
     },
     {
-        "id": "6ade8671e5535a1b",
+        "id": "c45f832c9d0ac1c7",
         "type": "switch",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "/join params",
         "property": "activityOpen",
         "propertyType": "msg",
@@ -720,17 +509,17 @@
         "y": 660,
         "wires": [
             [
-                "0d5a4e7b914d45df"
+                "349dfde6d20d6325"
             ],
             [
-                "cced5cd28e2d9c9a"
+                "3a546e1123ecfdbc"
             ]
         ]
     },
     {
-        "id": "1cbb2bb19e0fcf5f",
+        "id": "3e3d8c1f17c6c8f5",
         "type": "switch",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "is join?",
         "property": "command",
         "propertyType": "msg",
@@ -751,148 +540,29 @@
         "y": 680,
         "wires": [
             [
-                "fdd2ed4f96653f91"
+                "32c2d1b05d2ded3e"
             ],
             [
-                "5218694552e9686b"
+                "c65dc10d572c8628"
             ]
         ]
     },
     {
-        "id": "5218694552e9686b",
+        "id": "c65dc10d572c8628",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "all other commands",
         "links": [
-            "cd19e85e934feaf3"
+            "1daeaacca532cc6d"
         ],
         "x": 1355,
         "y": 700,
         "wires": []
     },
     {
-        "id": "5cf693b9ca27f0b7",
-        "type": "function",
-        "z": "a87b341c1947bfb2",
-        "name": "activity get request",
-        "func": "msg.payload = {\"fields\":[\"Activity Type\",\"Start Date Time\",\"edmlink\"],\"filterByFormula\":\"{uaid}='\"+msg.commandParams+\"'\"};\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 750,
-        "y": 2000,
-        "wires": [
-            [
-                "83691eeac594bc02"
-            ]
-        ]
-    },
-    {
-        "id": "83691eeac594bc02",
-        "type": "airtable out",
-        "z": "a87b341c1947bfb2",
-        "airtable": "9ef52be8e50ac20f",
-        "operation": "select",
-        "outputType": "array",
-        "table": "Activities",
-        "name": "Get activity record",
-        "x": 950,
-        "y": 2000,
-        "wires": [
-            [
-                "f236c3b01769b7ab",
-                "04df8bf7e3ed0b17"
-            ]
-        ]
-    },
-    {
-        "id": "f236c3b01769b7ab",
-        "type": "function",
-        "z": "a87b341c1947bfb2",
-        "name": "process result",
-        "func": "if (msg.payload.length != 0) {\n    msg.activityId = msg.payload[0].id;\n    msg.activity = JSON.parse(JSON.stringify(msg.payload[0]));\n} else {\n    msg.activity = null;\n}\n\nconsole.log(JSON.stringify(msg.activity));\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1140,
-        "y": 2000,
-        "wires": [
-            [
-                "c9bda0fd36c1f44c"
-            ]
-        ]
-    },
-    {
-        "id": "04df8bf7e3ed0b17",
-        "type": "debug",
-        "z": "a87b341c1947bfb2",
-        "name": "before process",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1190,
-        "y": 1940,
-        "wires": []
-    },
-    {
-        "id": "66b31309b26cfd4b",
+        "id": "3a546e1123ecfdbc",
         "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "successfully joined",
-        "message": [
-            {
-                "message": "placeholder"
-            }
-        ],
-        "language": "none",
-        "x": 1470,
-        "y": 2000,
-        "wires": [
-            [
-                "1b7d20f39f675840"
-            ]
-        ]
-    },
-    {
-        "id": "c9bda0fd36c1f44c",
-        "type": "switch",
-        "z": "a87b341c1947bfb2",
-        "name": "",
-        "property": "activity",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "nnull"
-            },
-            {
-                "t": "null"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 1290,
-        "y": 2000,
-        "wires": [
-            [
-                "66b31309b26cfd4b"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "cced5cd28e2d9c9a",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "no activity found",
         "message": [
             {
@@ -904,127 +574,66 @@
         "y": 880,
         "wires": [
             [
-                "b98084a124a345a7"
+                "b948cec75df325d1"
             ]
         ]
     },
     {
-        "id": "56225c5e7455a971",
+        "id": "2d3efe6758e51dbe",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "out",
         "links": [
-            "154bd3f01ce93ae4"
+            "c61e4ab1bf95a764"
         ],
         "x": 2695,
         "y": 880,
         "wires": []
     },
     {
-        "id": "1b7d20f39f675840",
-        "type": "function",
-        "z": "a87b341c1947bfb2",
-        "name": "craft message",
-        "func": "msg.payload.content = \"Successfully joined \" + msg.activity.fields[\"Activity Type\"] + \"\\nTime: \" + msg.activity.fields[\"Start Date Time\"] + \"\\n[More information](\" + msg.activity.fields[\"edmlink\"] + \")\";\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1660,
-        "y": 2000,
-        "wires": [
-            [
-                "6fd6f5e5192f41e5",
-                "5a76d508ea1e28aa"
-            ]
-        ]
-    },
-    {
-        "id": "6fd6f5e5192f41e5",
-        "type": "chatbot-params",
-        "z": "a87b341c1947bfb2",
-        "name": "add markdown",
-        "params": [
-            {
-                "platform": "telegram",
-                "name": "parseMode",
-                "value": "Markdown"
-            },
-            {
-                "platform": "telegram",
-                "name": "disableWebPagePreview",
-                "value": true
-            }
-        ],
-        "outputs": 1,
-        "x": 1840,
-        "y": 2000,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4c9107a9dd15aebd",
+        "id": "687f5203d955bd74",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "update endpoint",
         "links": [
-            "154bd3f01ce93ae4"
+            "c61e4ab1bf95a764"
         ],
         "x": 2795,
         "y": 660,
         "wires": []
     },
     {
-        "id": "5a76d508ea1e28aa",
-        "type": "debug",
-        "z": "a87b341c1947bfb2",
-        "name": "after process",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1580,
-        "y": 2060,
-        "wires": []
-    },
-    {
-        "id": "b423a03108b95589",
+        "id": "27e8c28d0a3f8769",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "/faq",
         "links": [
-            "fe79ef478e581439"
+            "467d684e60116a18"
         ],
         "x": 935,
         "y": 1080,
         "wires": []
     },
     {
-        "id": "fe79ef478e581439",
+        "id": "467d684e60116a18",
         "type": "link in",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "links": [
-            "b423a03108b95589"
+            "27e8c28d0a3f8769"
         ],
         "x": 915,
         "y": 780,
         "wires": [
             [
-                "95cf9e699e883648"
+                "ee33699e70bc30d6"
             ]
         ]
     },
     {
-        "id": "7695d28ae623f8ac",
+        "id": "4969f7a7024c72bf",
         "type": "comment",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "/faq",
         "info": "",
         "x": 950,
@@ -1032,9 +641,9 @@
         "wires": []
     },
     {
-        "id": "95cf9e699e883648",
+        "id": "ee33699e70bc30d6",
         "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "faq message",
         "message": [
             {
@@ -1046,14 +655,14 @@
         "y": 780,
         "wires": [
             [
-                "d51adaa9e6e20855"
+                "46f69ca564cfac08"
             ]
         ]
     },
     {
-        "id": "044a155083cee857",
+        "id": "45cec1b408e03885",
         "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "pdpa message",
         "message": [
             {
@@ -1065,30 +674,30 @@
         "y": 880,
         "wires": [
             [
-                "bc8995bc9593719d"
+                "14e144e49a67babb"
             ]
         ]
     },
     {
-        "id": "47a2a35ad0a0c513",
+        "id": "88aedec08e41d3a0",
         "type": "link in",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "links": [
-            "7fae7b0a9f5e348c"
+            "23af18058270dfac"
         ],
         "x": 915,
         "y": 880,
         "wires": [
             [
-                "044a155083cee857"
+                "45cec1b408e03885"
             ]
         ]
     },
     {
-        "id": "7a13c0da258680ac",
+        "id": "037dcae985927af2",
         "type": "comment",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "/pdpa",
         "info": "",
         "x": 950,
@@ -1096,45 +705,45 @@
         "wires": []
     },
     {
-        "id": "7fae7b0a9f5e348c",
+        "id": "23af18058270dfac",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "/pdpa",
         "links": [
-            "47a2a35ad0a0c513"
+            "88aedec08e41d3a0"
         ],
         "x": 935,
         "y": 1120,
         "wires": []
     },
     {
-        "id": "53fd5d920f313a16",
+        "id": "125a40fc3e097a6a",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "links": [
-            "154bd3f01ce93ae4"
+            "c61e4ab1bf95a764"
         ],
         "x": 1315,
         "y": 780,
         "wires": []
     },
     {
-        "id": "bc8995bc9593719d",
+        "id": "14e144e49a67babb",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "links": [
-            "154bd3f01ce93ae4"
+            "c61e4ab1bf95a764"
         ],
         "x": 1155,
         "y": 880,
         "wires": []
     },
     {
-        "id": "d51adaa9e6e20855",
+        "id": "46f69ca564cfac08",
         "type": "chatbot-params",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "add markdown",
         "params": [
             {
@@ -1153,113 +762,14 @@
         "y": 780,
         "wires": [
             [
-                "53fd5d920f313a16"
+                "125a40fc3e097a6a"
             ]
         ]
     },
     {
-        "id": "4fc5f57cf6965ce0",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "check against idpair",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 800,
-        "y": 1360,
-        "wires": [
-            [
-                "a121ef6cb48a5ef8",
-                "efdb32892ab62e88"
-            ]
-        ]
-    },
-    {
-        "id": "a121ef6cb48a5ef8",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "user found",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 1010,
-        "y": 1340,
-        "wires": [
-            [
-                "4ae16ca783dc83db"
-            ]
-        ]
-    },
-    {
-        "id": "efdb32892ab62e88",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "user not found",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 1020,
-        "y": 1400,
-        "wires": [
-            [
-                "79f2f08255a8a42f",
-                "54de9b222210e041",
-                "85bc9e0932004d26"
-            ]
-        ]
-    },
-    {
-        "id": "d31d5eb1d601c310",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "current flow",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 1430,
-        "y": 1380,
-        "wires": [
-            [
-                "41d3ecce3ef29371"
-            ]
-        ]
-    },
-    {
-        "id": "2608250a01b7a80f",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "refreshes utid recid pairs, check again",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 1510,
-        "y": 1440,
-        "wires": [
-            [
-                "4fc5f57cf6965ce0",
-                "6c01c69e0658cfca"
-            ]
-        ]
-    },
-    {
-        "id": "170ae80f9a694aad",
+        "id": "335b66ba412a5f20",
         "type": "inject",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "initialise",
         "props": [
             {
@@ -1277,15 +787,15 @@
         "y": 100,
         "wires": [
             [
-                "3968cd0d85ed5ff2"
+                "eef2b59f7ba25957"
             ]
         ]
     },
     {
-        "id": "75c0cec4b173ac57",
+        "id": "ac31d37f1a61177e",
         "type": "airtable out",
-        "z": "a87b341c1947bfb2",
-        "airtable": "f428f44dd803fdda",
+        "z": "ce49487b198a0e71",
+        "airtable": "b3d486671ef39bcb",
         "operation": "select",
         "outputType": "array",
         "table": "Members",
@@ -1294,15 +804,15 @@
         "y": 100,
         "wires": [
             [
-                "19260dd586e65b81",
-                "8641e162ae5892bb"
+                "8192fc288fc86244",
+                "65e0990d94726676"
             ]
         ]
     },
     {
-        "id": "8641e162ae5892bb",
+        "id": "65e0990d94726676",
         "type": "debug",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "bar",
         "active": false,
         "tosidebar": true,
@@ -1317,9 +827,9 @@
         "wires": []
     },
     {
-        "id": "57ea17e6dd74e495",
+        "id": "489c627c1c437231",
         "type": "change",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "rules": [
             {
@@ -1339,14 +849,14 @@
         "y": 100,
         "wires": [
             [
-                "3f02aa04ddb07467"
+                "0fd49c35706f9d78"
             ]
         ]
     },
     {
-        "id": "3f02aa04ddb07467",
+        "id": "0fd49c35706f9d78",
         "type": "debug",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "view flow.pairs",
         "active": true,
         "tosidebar": true,
@@ -1361,193 +871,28 @@
         "wires": []
     },
     {
-        "id": "07d30cb3019b40fe",
+        "id": "015ea5e5b8761995",
         "type": "link in",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "trigger memory refresh",
         "links": [
-            "435f6cc7922f111e",
-            "788c63709f54599e",
-            "f70eaee05f6106fe",
-            "21cb81522cf4875f",
-            "f8da7fa9e0f1c323"
+            "51aecabab784a917",
+            "e887996eceb1d8c0",
+            "8e05c31296168a5b",
+            "21cb81522cf4875f"
         ],
         "x": 55,
         "y": 180,
         "wires": [
             [
-                "d94cf8975ff64981"
+                "4ad2bac77468db4e"
             ]
         ]
     },
     {
-        "id": "4ae16ca783dc83db",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "message filter",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 1200,
-        "y": 1340,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "23b64593daf9fb9a",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "tele receiver",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 450,
-        "y": 1360,
-        "wires": [
-            [
-                "4fc5f57cf6965ce0"
-            ]
-        ]
-    },
-    {
-        "id": "41d3ecce3ef29371",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "flow.prompted = true",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 1640,
-        "y": 1380,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "79f2f08255a8a42f",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "prompted == false",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 1250,
-        "y": 1380,
-        "wires": [
-            [
-                "d31d5eb1d601c310"
-            ]
-        ]
-    },
-    {
-        "id": "54de9b222210e041",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "prompted == true",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 1230,
-        "y": 1440,
-        "wires": [
-            [
-                "2608250a01b7a80f"
-            ]
-        ]
-    },
-    {
-        "id": "6c01c69e0658cfca",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "flow.refreshed = true",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 2020,
-        "y": 1380,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "85bc9e0932004d26",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "refreshed == true",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 1230,
-        "y": 1480,
-        "wires": [
-            [
-                "76a1c640d5c7a16e"
-            ]
-        ]
-    },
-    {
-        "id": "76a1c640d5c7a16e",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "prompt again",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 1430,
-        "y": 1480,
-        "wires": [
-            [
-                "4fc5f57cf6965ce0",
-                "1b6cbbfeba8daadd"
-            ]
-        ]
-    },
-    {
-        "id": "1b6cbbfeba8daadd",
-        "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
-        "name": "flow.refreshed = false",
-        "message": [
-            {
-                "message": ""
-            }
-        ],
-        "language": "none",
-        "x": 1640,
-        "y": 1480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8c807706e4e0e414",
+        "id": "cff5a92424e861fd",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "findutid in pairs",
         "func": "var dict = flow.get(\"pairs\");\nmsg.found = false;\ntry {\n    if (dict.hasOwnProperty(msg.originalMessage.from.id)) {\n        msg.found = true;\n        // console.log(\"found\");\n    }\n} catch(e) {\n    console.log(e.message);\n}\n// console.log(\"finally\");\nreturn msg;",
         "outputs": 1,
@@ -1559,14 +904,14 @@
         "y": 1120,
         "wires": [
             [
-                "9cfd9eb6ee3b5822"
+                "4053716215c9834a"
             ]
         ]
     },
     {
-        "id": "19260dd586e65b81",
+        "id": "8192fc288fc86244",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "build pairs dict",
         "func": "var dict = new Object();\nfor (var i = 0; i < msg.payload.length; i++) {\n    dict[msg.payload[i].fields.utid] = new Object();\n    dict[msg.payload[i].fields.utid].id = msg.payload[i].id;\n    dict[msg.payload[i].fields.utid].name = msg.payload[i].fields[\"Full Name\"];\n    dict[msg.payload[i].fields.utid].signups = msg.payload[i].fields[\"Activity (from Activity Signups)\"];\n}\n// console.log(\"here\");\n// console.log(JSON.stringify(dict));\nflow.set(\"pairs\", dict);\nreturn msg;",
         "outputs": 1,
@@ -1578,14 +923,14 @@
         "y": 100,
         "wires": [
             [
-                "57ea17e6dd74e495"
+                "489c627c1c437231"
             ]
         ]
     },
     {
-        "id": "9cfd9eb6ee3b5822",
+        "id": "4053716215c9834a",
         "type": "switch",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "found?",
         "property": "found",
         "propertyType": "msg",
@@ -1604,17 +949,17 @@
         "y": 1120,
         "wires": [
             [
-                "1aa15878fa8cb82f"
+                "31f82aa861a8540e"
             ],
             [
-                "e90293ac3bcecb12"
+                "bd100e924fd442fa"
             ]
         ]
     },
     {
-        "id": "6c713c605de85f50",
+        "id": "568927e1270ea335",
         "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "welcome",
         "message": [
             {
@@ -1632,26 +977,26 @@
         "y": 460,
         "wires": [
             [
-                "7bc37a0d12f30e8f"
+                "831adeafc6269103"
             ]
         ]
     },
     {
-        "id": "615524b78415fcc0",
+        "id": "3a68be5fa9c1e998",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "request commands",
         "links": [
-            "cd19e85e934feaf3"
+            "1daeaacca532cc6d"
         ],
         "x": 1315,
         "y": 460,
         "wires": []
     },
     {
-        "id": "7bc37a0d12f30e8f",
+        "id": "831adeafc6269103",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "add name from dict",
         "func": "var dict = flow.get(\"pairs\");\nmsg.payload.content += dict[msg.originalMessage.from.id].name + \"!\"\nreturn msg;",
         "outputs": 1,
@@ -1663,14 +1008,14 @@
         "y": 460,
         "wires": [
             [
-                "615524b78415fcc0"
+                "3a68be5fa9c1e998"
             ]
         ]
     },
     {
-        "id": "e90293ac3bcecb12",
+        "id": "bd100e924fd442fa",
         "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "sign up prompt",
         "message": [
             {
@@ -1682,14 +1027,14 @@
         "y": 1260,
         "wires": [
             [
-                "032f80bc7112a821"
+                "1a2886c7489dc098"
             ]
         ]
     },
     {
-        "id": "032f80bc7112a821",
+        "id": "1a2886c7489dc098",
         "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "tele code",
         "message": [
             {
@@ -1701,14 +1046,14 @@
         "y": 1260,
         "wires": [
             [
-                "fd06cc132ebb529e"
+                "36e84837281774bf"
             ]
         ]
     },
     {
-        "id": "fd06cc132ebb529e",
+        "id": "36e84837281774bf",
         "type": "chatbot-params",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "add markdown",
         "params": [
             {
@@ -1727,53 +1072,43 @@
         "y": 1260,
         "wires": [
             [
-                "f5cdee4a9f14aeb1",
-                "788c63709f54599e"
+                "e4e574687dc6e3de",
+                "e887996eceb1d8c0"
             ]
         ]
     },
     {
-        "id": "f5cdee4a9f14aeb1",
+        "id": "e4e574687dc6e3de",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "sign up end point",
         "links": [
-            "154bd3f01ce93ae4"
+            "c61e4ab1bf95a764"
         ],
         "x": 1235,
         "y": 1260,
         "wires": []
     },
     {
-        "id": "f394103b32085cf5",
-        "type": "comment",
-        "z": "a87b341c1947bfb2",
-        "name": "old user handling",
-        "info": "",
-        "x": 740,
-        "y": 1720,
-        "wires": []
-    },
-    {
-        "id": "18789953b0cbafec",
+        "id": "b2cc1fd8d4ac46ab",
         "type": "link in",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "get user info",
         "links": [
-            "ce4f9657c9bd5433"
+            "044e02b5716b9bc8"
         ],
         "x": 915,
         "y": 460,
         "wires": [
             [
-                "6c713c605de85f50"
+                "568927e1270ea335"
             ]
         ]
     },
     {
-        "id": "7aed42d856b3adc5",
+        "id": "4c55beae6286c1f7",
         "type": "debug",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -1788,9 +1123,9 @@
         "wires": []
     },
     {
-        "id": "7041c16ccf81de33",
+        "id": "b73fad9b9285ce66",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "logger function",
         "func": "msg.payload = JSON.stringify(msg.originalMessage, null, \" | \");\nreturn msg;",
         "outputs": 1,
@@ -1802,14 +1137,14 @@
         "y": 880,
         "wires": [
             [
-                "7aed42d856b3adc5"
+                "4c55beae6286c1f7"
             ]
         ]
     },
     {
-        "id": "3968cd0d85ed5ff2",
+        "id": "eef2b59f7ba25957",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "select params",
         "func": "msg.payload = {\"fields\":[\"utid\", \"Full Name\",\"Activity (from Activity Signups)\"],\"filterByFormula\":\"NOT({utid} = '')\"};\nreturn msg;",
         "outputs": 1,
@@ -1821,14 +1156,14 @@
         "y": 100,
         "wires": [
             [
-                "75c0cec4b173ac57"
+                "ac31d37f1a61177e"
             ]
         ]
     },
     {
-        "id": "a7877f7b0225beb7",
+        "id": "ad489de7409c5700",
         "type": "chatbot-rules",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "refresh?",
         "rules": [
             {
@@ -1844,20 +1179,20 @@
         "y": 1120,
         "wires": [
             [
-                "435f6cc7922f111e"
+                "51aecabab784a917"
             ],
             [
-                "8c807706e4e0e414"
+                "cff5a92424e861fd"
             ]
         ]
     },
     {
-        "id": "435f6cc7922f111e",
+        "id": "51aecabab784a917",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "links": [
-            "07d30cb3019b40fe",
+            "015ea5e5b8761995",
             "272c3b122f11fdcb"
         ],
         "x": 375,
@@ -1865,12 +1200,12 @@
         "wires": []
     },
     {
-        "id": "788c63709f54599e",
+        "id": "e887996eceb1d8c0",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "links": [
-            "07d30cb3019b40fe",
+            "015ea5e5b8761995",
             "272c3b122f11fdcb"
         ],
         "x": 1235,
@@ -1878,19 +1213,9 @@
         "wires": []
     },
     {
-        "id": "31178ee47cf081c8",
-        "type": "comment",
-        "z": "a87b341c1947bfb2",
-        "name": "note",
-        "info": "it will always pick the first record that matches the user's utid. all subsequent records must be manually cleared by an admin",
-        "x": 1390,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "4ed7cbe321f20aeb",
+        "id": "879b0da74dc36e23",
         "type": "catch",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "todo: make nice date format",
         "scope": null,
         "uncaught": false,
@@ -1901,9 +1226,9 @@
         ]
     },
     {
-        "id": "8af6f131be295073",
+        "id": "ec96d1faab3be10c",
         "type": "inject",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "initialise",
         "props": [
             {
@@ -1921,16 +1246,16 @@
         "y": 260,
         "wires": [
             [
-                "5785fb098293c70e"
+                "0b8d9d8836ffc804"
             ]
         ]
     },
     {
-        "id": "5785fb098293c70e",
+        "id": "0b8d9d8836ffc804",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "select params",
-        "func": "msg.payload = {\"fields\":[\"Activity Type\",\"Activity Location\",\"Start Date Time\",\"edmlink\",\"uaid\",\"Activity Signups\"],\"filterByFormula\":\"{Status}='Registration Open'\"};\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
+        "func": "msg.payload = {\"fields\":[\"Activity Type\",\"Activity Location\",\"Start Date Time\",\"EDM Link\",\"uaid\",\"Activity Signups\"],\"filterByFormula\":\"{Status}='Registration Open'\"};\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1940,15 +1265,15 @@
         "y": 260,
         "wires": [
             [
-                "9ad98de4f7e0734c"
+                "ac1ae3170d1b839d"
             ]
         ]
     },
     {
-        "id": "9ad98de4f7e0734c",
+        "id": "ac1ae3170d1b839d",
         "type": "airtable out",
-        "z": "a87b341c1947bfb2",
-        "airtable": "f428f44dd803fdda",
+        "z": "ce49487b198a0e71",
+        "airtable": "b3d486671ef39bcb",
         "operation": "select",
         "outputType": "array",
         "table": "Activities",
@@ -1957,15 +1282,15 @@
         "y": 260,
         "wires": [
             [
-                "a8cf61ae61321860",
-                "367818e51eef4cc1"
+                "fab806c0593b6163",
+                "272e48ac986af966"
             ]
         ]
     },
     {
-        "id": "367818e51eef4cc1",
+        "id": "272e48ac986af966",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "build activities dict",
         "func": "var dict = {};\nfor (var i = 0; i < msg.payload.length; i++) {\n    var key = msg.payload[i].fields.uaid;\n    dict[key] = {};\n    dict[key].dt = msg.payload[i].fields[\"Start Date Time\"];\n    dict[key].at = msg.payload[i].fields[\"Activity Type\"];\n    dict[key].al = msg.payload[i].fields[\"Activity Location\"];\n    dict[key].edm = msg.payload[i].fields.edmlink;\n    dict[key].id = \"rec\" + key;\n    dict[key].signups =  msg.payload[i].fields[\"Activity Signups\"];\n}\n// console.log(\"here\");\n// console.log(JSON.stringify(dict));\nflow.set(\"activities\", dict);\nreturn msg;",
         "outputs": 1,
@@ -1977,15 +1302,15 @@
         "y": 260,
         "wires": [
             [
-                "75f451ac161736bd",
-                "4b7b5e378beef5ca"
+                "47ebc7454c6b0705",
+                "d5aab568d07335fe"
             ]
         ]
     },
     {
-        "id": "a8cf61ae61321860",
+        "id": "fab806c0593b6163",
         "type": "debug",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "bar",
         "active": false,
         "tosidebar": true,
@@ -2000,9 +1325,9 @@
         "wires": []
     },
     {
-        "id": "4b7b5e378beef5ca",
+        "id": "d5aab568d07335fe",
         "type": "change",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "rules": [
             {
@@ -2022,14 +1347,14 @@
         "y": 260,
         "wires": [
             [
-                "b270d8caeccd840b"
+                "a9b48d46282d3f51"
             ]
         ]
     },
     {
-        "id": "b270d8caeccd840b",
+        "id": "a9b48d46282d3f51",
         "type": "debug",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "view flow.activities",
         "active": true,
         "tosidebar": true,
@@ -2044,9 +1369,9 @@
         "wires": []
     },
     {
-        "id": "75f451ac161736bd",
+        "id": "47ebc7454c6b0705",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "build activities list",
         "func": "var str = \"*Activities available:*\\n\\n\";\nvar a = flow.get(\"activities\");\nfor (const key in a) {\n    str += a[key].at + \" | [Details](\" + a[key].edm + \")\\n\";\n    str += a[key].al + \"\\n\";\n    str += a[key].dt + \"\\n\";\n    str += \"/join\\\\_\" +key + \"\\n\\n\";\n}\nmsg.payload = str.trim();\nflow.set(\"alist\", str);\nreturn msg;",
         "outputs": 1,
@@ -2058,14 +1383,14 @@
         "y": 200,
         "wires": [
             [
-                "0bf613885b8621bf"
+                "61d2bdc6a81b6bf5"
             ]
         ]
     },
     {
-        "id": "0bf613885b8621bf",
+        "id": "61d2bdc6a81b6bf5",
         "type": "debug",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "view flow.alist",
         "active": true,
         "tosidebar": true,
@@ -2080,9 +1405,9 @@
         "wires": []
     },
     {
-        "id": "20dbada0831903f5",
+        "id": "14f5ecabd62e1a9f",
         "type": "chatbot-params",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "add markdown",
         "params": [
             {
@@ -2101,14 +1426,14 @@
         "y": 880,
         "wires": [
             [
-                "56225c5e7455a971"
+                "2d3efe6758e51dbe"
             ]
         ]
     },
     {
-        "id": "b98084a124a345a7",
+        "id": "b948cec75df325d1",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "craft message",
         "func": "var alist = flow.get(\"alist\");\n//replace join links with \"signed up\"\nvar usersignups = flow.get(\"pairs\")[msg.originalMessage.from.id].signups;\nif (usersignups != null) {\n    for (var i = 0; i < usersignups.length; i++) {\n        var tofind = \"/join\\\\_\" + usersignups[i].replace(\"rec\", \"\");\n        alist = alist.replace(tofind, \"_Signed Up_\");\n        // console.log(tofind);\n    }\n}\nmsg.payload.content += alist;\nreturn msg;",
         "outputs": 1,
@@ -2120,15 +1445,15 @@
         "y": 880,
         "wires": [
             [
-                "20dbada0831903f5",
-                "4ac7a03063ebd3ee"
+                "14f5ecabd62e1a9f",
+                "913dcfbd3e831ca3"
             ]
         ]
     },
     {
-        "id": "fdd2ed4f96653f91",
+        "id": "32c2d1b05d2ded3e",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "func": "var activities = flow.get(\"activities\");\nmsg.activityOpen = false;\nif (activities.hasOwnProperty(msg.commandParams)) {\n    msg.activityOpen = true;\n}\nreturn msg;",
         "outputs": 1,
@@ -2140,14 +1465,14 @@
         "y": 660,
         "wires": [
             [
-                "6ade8671e5535a1b"
+                "c45f832c9d0ac1c7"
             ]
         ]
     },
     {
-        "id": "247ef4b34b8cfc45",
+        "id": "9a17312c1143c1b4",
         "type": "comment",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "unrecognised command",
         "info": "",
         "x": 1480,
@@ -2155,9 +1480,9 @@
         "wires": []
     },
     {
-        "id": "f6d037db44eaad80",
+        "id": "e9bf6b99d0199706",
         "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "success",
         "message": [
             {
@@ -2169,15 +1494,15 @@
         "y": 660,
         "wires": [
             [
-                "4c9107a9dd15aebd",
-                "f70eaee05f6106fe"
+                "687f5203d955bd74",
+                "8e05c31296168a5b"
             ]
         ]
     },
     {
-        "id": "4ac7a03063ebd3ee",
+        "id": "913dcfbd3e831ca3",
         "type": "debug",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "bar",
         "active": false,
         "tosidebar": true,
@@ -2192,9 +1517,9 @@
         "wires": []
     },
     {
-        "id": "4d778f18fea208db",
+        "id": "0c6ab0be2920935f",
         "type": "debug",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "foo",
         "active": true,
         "tosidebar": true,
@@ -2209,10 +1534,10 @@
         "wires": []
     },
     {
-        "id": "590f1a761e437246",
+        "id": "675eb0d93680b407",
         "type": "airtable out",
-        "z": "a87b341c1947bfb2",
-        "airtable": "f428f44dd803fdda",
+        "z": "ce49487b198a0e71",
+        "airtable": "b3d486671ef39bcb",
         "operation": "create",
         "outputType": "array",
         "table": "Activity Signups",
@@ -2221,15 +1546,15 @@
         "y": 660,
         "wires": [
             [
-                "4d778f18fea208db",
-                "f6d037db44eaad80"
+                "0c6ab0be2920935f",
+                "e9bf6b99d0199706"
             ]
         ]
     },
     {
-        "id": "eae286ea06837d7f",
+        "id": "b1e4926bc5d068c2",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "sign up for activity",
         "func": "var idpairs = flow.get(\"pairs\");\nvar partid = idpairs[msg.originalMessage.from.id].id;\nconsole.log(partid);\nconsole.log(msg.commandParams);\nmsg.payload = {\"Activity\": [\"rec\" + msg.commandParams], \"Participant Name\": [partid]};\nreturn msg;",
         "outputs": 1,
@@ -2241,14 +1566,14 @@
         "y": 660,
         "wires": [
             [
-                "590f1a761e437246"
+                "675eb0d93680b407"
             ]
         ]
     },
     {
-        "id": "d9c762a902b4a691",
+        "id": "95952c0626f3de2a",
         "type": "catch",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "scope": null,
         "uncaught": false,
@@ -2256,14 +1581,14 @@
         "y": 480,
         "wires": [
             [
-                "2fbe87819d107708"
+                "a23f43e93903da5f"
             ]
         ]
     },
     {
-        "id": "2fbe87819d107708",
+        "id": "a23f43e93903da5f",
         "type": "debug",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "error found!",
         "active": true,
         "tosidebar": true,
@@ -2278,19 +1603,9 @@
         "wires": []
     },
     {
-        "id": "650d254eb6df5ae4",
-        "type": "comment",
-        "z": "a87b341c1947bfb2",
-        "name": "old activity handling",
-        "info": "",
-        "x": 750,
-        "y": 1940,
-        "wires": []
-    },
-    {
-        "id": "0d5a4e7b914d45df",
+        "id": "349dfde6d20d6325",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "check if user already in",
         "func": "msg.already = false;\n// var userrecid = flow.get(\"pairs\")[msg.originalMessage.from.id].id //get user's record id\nvar usersignups = flow.get(\"pairs\")[msg.originalMessage.from.id].signups; //get list of all signups for user\nvar activitysignups = flow.get(\"activities\")[msg.commandParams].signups; //get list of all signups for activity\n\n//if either user or activity has no signups, skip the check\nif (usersignups == null || activitysignups == null) {\n    return msg;\n}\n\n//iterate and compare all user's signups and activity's signups\nfor (var i = 0; i < usersignups.length; i++) {\n    for (var j = 0; j < activitysignups.length; j++) {\n        // console.log(usersignups[i] + \" vs \" + activitysignups[j]);\n        if (usersignups[i] == activitysignups[j]) {\n            msg.already = true;\n            return msg;\n        }\n    }\n}\nreturn msg;",
         "outputs": 1,
@@ -2302,14 +1617,14 @@
         "y": 660,
         "wires": [
             [
-                "a5f24069323e4c5c"
+                "536fd138a659b593"
             ]
         ]
     },
     {
-        "id": "27e05c7cb08325c5",
+        "id": "1fa80d7663acb7a1",
         "type": "comment",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "activity open",
         "info": "",
         "x": 1730,
@@ -2317,9 +1632,9 @@
         "wires": []
     },
     {
-        "id": "733954ec4162574a",
+        "id": "bf9396fb08cebecc",
         "type": "comment",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "activity not open",
         "info": "",
         "x": 1740,
@@ -2327,9 +1642,9 @@
         "wires": []
     },
     {
-        "id": "a5f24069323e4c5c",
+        "id": "536fd138a659b593",
         "type": "switch",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "property": "already",
         "propertyType": "msg",
@@ -2348,17 +1663,17 @@
         "y": 660,
         "wires": [
             [
-                "eae286ea06837d7f"
+                "b1e4926bc5d068c2"
             ],
             [
-                "017d6255c546c344"
+                "060466cc2c058d96"
             ]
         ]
     },
     {
-        "id": "017d6255c546c344",
+        "id": "060466cc2c058d96",
         "type": "chatbot-message",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "already signed up!",
         "message": [
             {
@@ -2370,38 +1685,38 @@
         "y": 720,
         "wires": [
             [
-                "c3a6d1c665a45d33"
+                "019ec0e431a666d9"
             ]
         ]
     },
     {
-        "id": "c3a6d1c665a45d33",
+        "id": "019ec0e431a666d9",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "out",
         "links": [
-            "154bd3f01ce93ae4"
+            "c61e4ab1bf95a764"
         ],
         "x": 2395,
         "y": 720,
         "wires": []
     },
     {
-        "id": "f70eaee05f6106fe",
+        "id": "8e05c31296168a5b",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "request refresh",
         "links": [
-            "07d30cb3019b40fe"
+            "015ea5e5b8761995"
         ],
         "x": 2795,
         "y": 600,
         "wires": []
     },
     {
-        "id": "4a53381b13df59a6",
+        "id": "1ccb2b72780cab89",
         "type": "function",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "userId to record",
         "func": "var userId = msg.originalMessage.from.id;\n// msg.payload = {\"fields\":[\"update link\"], \"filterByFormula\":\"{utid}='\"+userId+\"'\"};\n//make sure that only 1 is returned: the original record, where toUpdate is blank\nmsg.payload = {\"fields\":[\"Full Name\", \"Student ID\", \"Gender\", \"Date of Birth\", \"Nationality\", \"Home Address\", \"Telegram Handle\", \"Mobile Number\", \"School\", \"Year of Matriculation\", \"Academic Email\"], \"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
         "outputs": 1,
@@ -2416,9 +1731,9 @@
         ]
     },
     {
-        "id": "99f214a659bb62e0",
+        "id": "2dfb69bf442ea594",
         "type": "comment",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "refresher function",
         "info": "",
         "x": 260,
@@ -2426,9 +1741,9 @@
         "wires": []
     },
     {
-        "id": "d94cf8975ff64981",
+        "id": "4ad2bac77468db4e",
         "type": "delay",
-        "z": "a87b341c1947bfb2",
+        "z": "ce49487b198a0e71",
         "name": "",
         "pauseType": "rate",
         "timeout": "30",
@@ -2445,21 +1760,214 @@
         "y": 180,
         "wires": [
             [
-                "3968cd0d85ed5ff2",
-                "5785fb098293c70e"
+                "eef2b59f7ba25957",
+                "0b8d9d8836ffc804"
             ]
         ]
     },
     {
-        "id": "f8da7fa9e0f1c323",
+        "id": "ce53d75e5c19b459",
         "type": "link out",
-        "z": "a87b341c1947bfb2",
-        "name": "/refresh",
+        "z": "ce49487b198a0e71",
+        "name": "/wpt",
         "links": [
-            "07d30cb3019b40fe"
+            "b585969ac120096e"
         ],
         "x": 935,
         "y": 1160,
         "wires": []
+    },
+    {
+        "id": "43325c5190788891",
+        "type": "debug",
+        "z": "ce49487b198a0e71",
+        "name": "Chat Log",
+        "active": true,
+        "tosidebar": false,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "923d9741b3036dad",
+        "type": "function",
+        "z": "ce49487b198a0e71",
+        "name": "",
+        "func": "username = msg.originalMessage.chat.username;\ntext = msg.originalMessage.text;\nmsg.payload = username + \" sent \" + text;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 960,
+        "wires": [
+            [
+                "43325c5190788891"
+            ]
+        ]
+    },
+    {
+        "id": "9b86fa92aa4850fe",
+        "type": "airtable out",
+        "z": "ce49487b198a0e71",
+        "airtable": "b3d486671ef39bcb",
+        "operation": "select",
+        "outputType": "array",
+        "table": "Members",
+        "name": "Get user record",
+        "x": 1240,
+        "y": 1500,
+        "wires": [
+            [
+                "317f67a94817b659"
+            ]
+        ]
+    },
+    {
+        "id": "3bce2d9d3c3bf06f",
+        "type": "function",
+        "z": "ce49487b198a0e71",
+        "name": "userId to record",
+        "func": "var userId = msg.originalMessage.from.id;\nmsg.payload = {\"fields\":[\"wptbutton\"], \"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 1500,
+        "wires": [
+            [
+                "9b86fa92aa4850fe"
+            ]
+        ]
+    },
+    {
+        "id": "d0d99d814c6bcd08",
+        "type": "comment",
+        "z": "ce49487b198a0e71",
+        "name": "/wpt",
+        "info": "",
+        "x": 950,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "b585969ac120096e",
+        "type": "link in",
+        "z": "ce49487b198a0e71",
+        "name": "update",
+        "links": [
+            "ce53d75e5c19b459"
+        ],
+        "x": 915,
+        "y": 1500,
+        "wires": [
+            [
+                "3bce2d9d3c3bf06f"
+            ]
+        ]
+    },
+    {
+        "id": "317f67a94817b659",
+        "type": "function",
+        "z": "ce49487b198a0e71",
+        "name": "get update link",
+        "func": "if (msg.payload.length != 0) {\n    msg.userData = msg.payload[0];\n    msg.newUser = false;\n} else {\n    msg.newUser = true;\n}\n\nmsg.updateLink = msg.userData.fields.wptbutton.url;\n// console.log(msg.updateLink)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1420,
+        "y": 1500,
+        "wires": [
+            [
+                "1f8c971e2c14edcf"
+            ]
+        ]
+    },
+    {
+        "id": "1f8c971e2c14edcf",
+        "type": "chatbot-message",
+        "z": "ce49487b198a0e71",
+        "name": "placeholder",
+        "message": [
+            {
+                "message": "placeholder"
+            }
+        ],
+        "language": "none",
+        "x": 1610,
+        "y": 1500,
+        "wires": [
+            [
+                "6d98cb64768550a9"
+            ]
+        ]
+    },
+    {
+        "id": "a034d2a7a9b895bb",
+        "type": "link out",
+        "z": "ce49487b198a0e71",
+        "name": "update endpoint",
+        "links": [
+            "c61e4ab1bf95a764"
+        ],
+        "x": 2095,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "6d98cb64768550a9",
+        "type": "function",
+        "z": "ce49487b198a0e71",
+        "name": "craft message",
+        "func": "msg.payload.content = \"[Tap here](\" + msg.updateLink + \") to indicate your swimming proficiency/SMU Water Proficiency Test Status.\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1800,
+        "y": 1500,
+        "wires": [
+            [
+                "d968e794c6c68304"
+            ]
+        ]
+    },
+    {
+        "id": "d968e794c6c68304",
+        "type": "chatbot-params",
+        "z": "ce49487b198a0e71",
+        "name": "add markdown",
+        "params": [
+            {
+                "platform": "telegram",
+                "name": "parseMode",
+                "value": "Markdown"
+            },
+            {
+                "platform": "telegram",
+                "name": "disableWebPagePreview",
+                "value": true
+            }
+        ],
+        "outputs": 1,
+        "x": 1980,
+        "y": 1500,
+        "wires": [
+            [
+                "a034d2a7a9b895bb"
+            ]
+        ]
     }
 ]
