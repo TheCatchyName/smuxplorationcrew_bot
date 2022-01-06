@@ -365,13 +365,11 @@
             "687f5203d955bd74",
             "125a40fc3e097a6a",
             "14e144e49a67babb",
-            "e4e574687dc6e3de",
             "019ec0e431a666d9",
             "a034d2a7a9b895bb",
             "ac436316bf0fcf4b",
             "475a66b7c8dcc45f",
-            "dd010f3519030b67",
-            "a0f94bd17d4f9f75"
+            "dd010f3519030b67"
         ],
         "x": 2435,
         "y": 480,
@@ -518,28 +516,40 @@
         "id": "c45f832c9d0ac1c7",
         "type": "switch",
         "z": "ce49487b198a0e71",
-        "name": "/join params",
-        "property": "activityOpen",
+        "name": "not found/open/closed",
+        "property": "activityStatus",
         "propertyType": "msg",
         "rules": [
             {
-                "t": "true"
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
             },
             {
-                "t": "false"
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": true,
-        "outputs": 2,
-        "x": 1570,
+        "outputs": 3,
+        "x": 1600,
         "y": 660,
         "wires": [
+            [
+                "3a546e1123ecfdbc"
+            ],
             [
                 "349dfde6d20d6325"
             ],
             [
-                "3a546e1123ecfdbc"
+                "061daa0343dc4fa1"
             ]
         ]
     },
@@ -625,8 +635,8 @@
         "links": [
             "c61e4ab1bf95a764"
         ],
-        "x": 2795,
-        "y": 660,
+        "x": 2995,
+        "y": 1020,
         "wires": []
     },
     {
@@ -1108,9 +1118,7 @@
         "type": "link out",
         "z": "ce49487b198a0e71",
         "name": "sign up end point",
-        "links": [
-            "c61e4ab1bf95a764"
-        ],
+        "links": [],
         "x": 1715,
         "y": 1420,
         "wires": []
@@ -1255,7 +1263,7 @@
         "type": "function",
         "z": "ce49487b198a0e71",
         "name": "select params",
-        "func": "msg.payload = {\"fields\":[\"Activity Type\",\"Activity Location\",\"Start Date Time\",\"EDM Link\",\"uaid\",\"Activity Signups\",\"Required Proficiencies\"],\"filterByFormula\":\"{Status}='Registration Open'\"};\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
+        "func": "// msg.payload = {\"fields\":[\"Activity Type\",\"Activity Location\",\"Start Date Time\",\"EDM Link\",\"uaid\",\"Activity Signups\",\"Required Proficiencies\"],\"filterByFormula\":\"{Status}='Registration Open'\"};\nmsg.payload = {\"fields\":[\"Activity Type\",\"Activity Location\",\"Start Date Time\",\"EDM Link\",\"uaid\",\"Activity Signups\",\"Required Proficiencies\",\"Status\"],\"filterByFormula\":\"OR({Status} = 'Registration Open', {Status}='Registration Closed')\"};\n\n//msg.payload = {\"fields\":[\"Name\",\"Gender\",\"Team\"],\"filterByFormula\":\"{utid}='\"+userId+\"'\"};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1292,7 +1300,7 @@
         "type": "function",
         "z": "ce49487b198a0e71",
         "name": "build activities dict",
-        "func": "var dict = {};\nfor (var i = 0; i < msg.payload.length; i++) {\n    var key = msg.payload[i].fields.uaid;\n    dict[key] = {};\n    dict[key].dt = msg.payload[i].fields[\"Start Date Time\"];\n    dict[key].at = msg.payload[i].fields[\"Activity Type\"];\n    dict[key].al = msg.payload[i].fields[\"Activity Location\"];\n    dict[key].edm = msg.payload[i].fields.edmlink;\n    dict[key].id = \"rec\" + key;\n    dict[key].signups =  msg.payload[i].fields[\"Activity Signups\"];\n    dict[key].prof =  msg.payload[i].fields[\"Required Proficiencies\"];\n}\n// console.log(\"here\");\n// console.log(JSON.stringify(dict));\nflow.set(\"activities\", dict);\nreturn msg;",
+        "func": "var dict = {};\nfor (var i = 0; i < msg.payload.length; i++) {\n    var key = msg.payload[i].fields.uaid;\n    dict[key] = {};\n    dict[key].dt = msg.payload[i].fields[\"Start Date Time\"];\n    dict[key].at = msg.payload[i].fields[\"Activity Type\"];\n    dict[key].al = msg.payload[i].fields[\"Activity Location\"];\n    dict[key].edm = msg.payload[i].fields.edmlink;\n    dict[key].id = \"rec\" + key;\n    dict[key].signups =  msg.payload[i].fields[\"Activity Signups\"];\n    dict[key].prof =  msg.payload[i].fields[\"Required Proficiencies\"];\n    dict[key].open =  msg.payload[i].fields[\"Status\"] == \"Registration Open\";\n}\n// console.log(\"here\");\n// console.log(JSON.stringify(dict));\nflow.set(\"activities\", dict);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1435,7 +1443,7 @@
         "type": "function",
         "z": "ce49487b198a0e71",
         "name": "tailor activity list",
-        "func": "var alist = flow.get(\"alist\");\n//replace join links with \"signed up\" if the user has already signed up\nvar usersignups = flow.get(\"pairs\")[msg.originalMessage.from.id].signups;\nif (usersignups != null) {\n    for (var i = 0; i < usersignups.length; i++) {\n        var tofind = \"/join\\\\_\" + usersignups[i].replace(\"rec\", \"\");\n        alist = alist.replace(tofind, \"_Signed Up_\");\n        // console.log(tofind);\n    }\n}\n\n//replace join links with required proficiencies if absent\n//get user's proficiences (values are either undefined, or an array of 1 object)\nvar bpt = flow.get(\"pairs\")[msg.originalMessage.from.id].bpt;\nvar kpt = flow.get(\"pairs\")[msg.originalMessage.from.id].kpt;\nvar spt = flow.get(\"pairs\")[msg.originalMessage.from.id].spt;\nvar wpt = flow.get(\"pairs\")[msg.originalMessage.from.id].wpt;\n\n//iterate through activities to check proficiency matches\nvar a = flow.get(\"activities\");\nfor (const key in a) {\n    //iterate through proficiency list\n    for (var j = 0; j < a[key].prof.length; j++) {\n        //for each proficiency required, if the user does not have it, add it to the prompt.\n        var prompt = \"Signing up requires:\";\n        var missing = \"\";\n        switch (a[key].prof[j]) {\n            case \"None\":\n                //do nothing if there are no profs required\n                break;\n            case \"BPT\":\n                if (bpt == null) { missing = \" /bikingproficiency\"; }\n                break;\n            case \"Kayaking\":\n                if (kpt == null) { missing = \" /kayakingproficiency\"; }\n                break;\n            case \"Skating\":\n                if (spt == null) { missing = \" /skatingproficiency\"; }\n                break;\n            case \"WPT\":\n                if (wpt == null) { missing = \" /waterproficiency\"; }\n                break;\n        }\n        prompt += missing;\n    }\n    //replace join link with prompt if it is unchanged\n    if (prompt != \"Signing up requires:\") {\n        var tofind2 = \"/join\\\\_\" + key;\n        alist = alist.replace(tofind2, prompt);\n    }\n    \n    //goes to next activity\n}\n\nmsg.payload.content += alist;\nreturn msg;",
+        "func": "var alist = flow.get(\"alist\");\n//replace join links with \"signed up\" if the user has already signed up\nvar usersignups = flow.get(\"pairs\")[msg.originalMessage.from.id].signups;\nif (usersignups != null) {\n    for (var i = 0; i < usersignups.length; i++) {\n        var tofind = \"/join\\\\_\" + usersignups[i].replace(\"rec\", \"\");\n        alist = alist.replace(tofind, \"_Signed Up_\");\n        // console.log(tofind);\n    }\n}\n\nvar a = flow.get(\"activities\");\n//replace join links with \"registration closed\" if registration is closed\nfor (const aName in a) {\n    if (!a[aName].open) {\n        var tofind3 = \"/join\\\\_\" + aName;\n        alist = alist.replace(tofind3, \"_Signups closed_\");\n    }\n}\n\n//replace join links with required proficiencies if absent\n//get user's proficiences (values are either undefined, or an array of 1 object)\nvar bpt = flow.get(\"pairs\")[msg.originalMessage.from.id].bpt;\nvar kpt = flow.get(\"pairs\")[msg.originalMessage.from.id].kpt;\nvar spt = flow.get(\"pairs\")[msg.originalMessage.from.id].spt;\nvar wpt = flow.get(\"pairs\")[msg.originalMessage.from.id].wpt;\n\n//iterate through activities to check proficiency matches\nfor (const key in a) {\n    //iterate through proficiency list\n    for (var j = 0; j < a[key].prof.length; j++) {\n        //for each proficiency required, if the user does not have it, add it to the prompt.\n        var prompt = \"Signing up requires:\";\n        var missing = \"\";\n        switch (a[key].prof[j]) {\n            case \"None\":\n                //do nothing if there are no profs required\n                break;\n            case \"BPT\":\n                if (bpt == null) { missing = \" /bikingproficiency\"; }\n                break;\n            case \"Kayaking\":\n                if (kpt == null) { missing = \" /kayakingproficiency\"; }\n                break;\n            case \"Skating\":\n                if (spt == null) { missing = \" /skatingproficiency\"; }\n                break;\n            case \"WPT\":\n                if (wpt == null) { missing = \" /waterproficiency\"; }\n                break;\n        }\n        prompt += missing;\n    }\n    //replace join link with prompt if it is unchanged\n    if (prompt != \"Signing up requires:\") {\n        var tofind2 = \"/join\\\\_\" + key;\n        alist = alist.replace(tofind2, prompt);\n    }\n    \n    //goes to next activity\n}\n\nmsg.payload.content += alist;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1455,7 +1463,7 @@
         "type": "function",
         "z": "ce49487b198a0e71",
         "name": "",
-        "func": "var activities = flow.get(\"activities\");\nmsg.activityOpen = false;\nif (activities.hasOwnProperty(msg.commandParams)) {\n    msg.activityOpen = true;\n}\nreturn msg;",
+        "func": "var activities = flow.get(\"activities\");\nmsg.activityStatus = 0; //0 = not found, 1 = open, 2 = closed\nif (activities.hasOwnProperty(msg.commandParams)) { //check if such activity exists\n    //check if activity is open for registration\n    if (activities[msg.commandParams].open) {\n        msg.activityStatus = 1;\n    } else {\n        msg.aName = activities[msg.commandParams].at //get the name of the activity\n        msg.activityStatus = 2;\n    }\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1490,8 +1498,8 @@
             }
         ],
         "language": "none",
-        "x": 2640,
-        "y": 660,
+        "x": 2840,
+        "y": 1020,
         "wires": [
             [
                 "687f5203d955bd74",
@@ -1521,7 +1529,7 @@
         "type": "debug",
         "z": "ce49487b198a0e71",
         "name": "foo",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1529,8 +1537,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2550,
-        "y": 580,
+        "x": 2790,
+        "y": 960,
         "wires": []
     },
     {
@@ -1542,8 +1550,8 @@
         "outputType": "array",
         "table": "Activity Signups",
         "name": "add sign up",
-        "x": 2450,
-        "y": 660,
+        "x": 2650,
+        "y": 1020,
         "wires": [
             [
                 "0c6ab0be2920935f",
@@ -1562,8 +1570,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2230,
-        "y": 660,
+        "x": 2430,
+        "y": 1020,
         "wires": [
             [
                 "675eb0d93680b407"
@@ -1613,8 +1621,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1820,
-        "y": 660,
+        "x": 2020,
+        "y": 1020,
         "wires": [
             [
                 "536fd138a659b593"
@@ -1627,8 +1635,8 @@
         "z": "ce49487b198a0e71",
         "name": "activity open",
         "info": "",
-        "x": 1730,
-        "y": 620,
+        "x": 1990,
+        "y": 980,
         "wires": []
     },
     {
@@ -1637,8 +1645,8 @@
         "z": "ce49487b198a0e71",
         "name": "activity not open",
         "info": "",
-        "x": 1740,
-        "y": 860,
+        "x": 2000,
+        "y": 1100,
         "wires": []
     },
     {
@@ -1659,8 +1667,8 @@
         "checkall": "true",
         "repair": true,
         "outputs": 2,
-        "x": 2010,
-        "y": 660,
+        "x": 2210,
+        "y": 1020,
         "wires": [
             [
                 "b1e4926bc5d068c2"
@@ -1681,8 +1689,8 @@
             }
         ],
         "language": "none",
-        "x": 2230,
-        "y": 720,
+        "x": 2430,
+        "y": 1080,
         "wires": [
             [
                 "019ec0e431a666d9"
@@ -1697,8 +1705,8 @@
         "links": [
             "c61e4ab1bf95a764"
         ],
-        "x": 2395,
-        "y": 720,
+        "x": 2595,
+        "y": 1080,
         "wires": []
     },
     {
@@ -1709,8 +1717,8 @@
         "links": [
             "015ea5e5b8761995"
         ],
-        "x": 2795,
-        "y": 600,
+        "x": 2995,
+        "y": 960,
         "wires": []
     },
     {
@@ -2695,9 +2703,7 @@
         "type": "link out",
         "z": "ce49487b198a0e71",
         "name": "sign up end point",
-        "links": [
-            "c61e4ab1bf95a764"
-        ],
+        "links": [],
         "x": 2415,
         "y": 1540,
         "wires": []
@@ -2806,6 +2812,35 @@
         "wires": [
             [
                 "c74447d42e53349b"
+            ]
+        ]
+    },
+    {
+        "id": "f694f873539eafc4",
+        "type": "comment",
+        "z": "ce49487b198a0e71",
+        "name": "activity not found",
+        "info": "",
+        "x": 2000,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "061daa0343dc4fa1",
+        "type": "chatbot-message",
+        "z": "ce49487b198a0e71",
+        "name": "activity closed",
+        "message": [
+            {
+                "message": "Signups for {{aName}} are closed. Why not try something else? "
+            }
+        ],
+        "language": "none",
+        "x": 2000,
+        "y": 1140,
+        "wires": [
+            [
+                "b948cec75df325d1"
             ]
         ]
     }
