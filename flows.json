@@ -370,7 +370,8 @@
             "a034d2a7a9b895bb",
             "ac436316bf0fcf4b",
             "475a66b7c8dcc45f",
-            "dd010f3519030b67"
+            "dd010f3519030b67",
+            "a0f94bd17d4f9f75"
         ],
         "x": 2435,
         "y": 480,
@@ -978,7 +979,7 @@
                 "31f82aa861a8540e"
             ],
             [
-                "bd100e924fd442fa"
+                "b1aaa172e162ef0a"
             ]
         ]
     },
@@ -1049,8 +1050,8 @@
             }
         ],
         "language": "none",
-        "x": 740,
-        "y": 1360,
+        "x": 1100,
+        "y": 1420,
         "wires": [
             [
                 "1a2886c7489dc098"
@@ -1068,11 +1069,11 @@
             }
         ],
         "language": "none",
-        "x": 900,
-        "y": 1360,
+        "x": 1260,
+        "y": 1420,
         "wires": [
             [
-                "36e84837281774bf"
+                "9b01e19c9dfe3155"
             ]
         ]
     },
@@ -1094,12 +1095,11 @@
             }
         ],
         "outputs": 1,
-        "x": 1060,
-        "y": 1360,
+        "x": 1560,
+        "y": 1420,
         "wires": [
             [
-                "e4e574687dc6e3de",
-                "e887996eceb1d8c0"
+                "e4e574687dc6e3de"
             ]
         ]
     },
@@ -1111,8 +1111,8 @@
         "links": [
             "c61e4ab1bf95a764"
         ],
-        "x": 1215,
-        "y": 1360,
+        "x": 1715,
+        "y": 1420,
         "wires": []
     },
     {
@@ -1223,19 +1223,6 @@
         ],
         "x": 375,
         "y": 1060,
-        "wires": []
-    },
-    {
-        "id": "e887996eceb1d8c0",
-        "type": "link out",
-        "z": "ce49487b198a0e71",
-        "name": "",
-        "links": [
-            "015ea5e5b8761995",
-            "272c3b122f11fdcb"
-        ],
-        "x": 1215,
-        "y": 1300,
         "wires": []
     },
     {
@@ -1835,8 +1822,8 @@
         "outputType": "array",
         "table": "Members",
         "name": "Get user record",
-        "x": 1240,
-        "y": 1500,
+        "x": 1120,
+        "y": 1680,
         "wires": [
             [
                 "317f67a94817b659"
@@ -1854,8 +1841,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1040,
-        "y": 1500,
+        "x": 920,
+        "y": 1680,
         "wires": [
             [
                 "9b86fa92aa4850fe"
@@ -1868,8 +1855,8 @@
         "z": "ce49487b198a0e71",
         "name": "/bikingproficiency",
         "info": "",
-        "x": 980,
-        "y": 1460,
+        "x": 860,
+        "y": 1640,
         "wires": []
     },
     {
@@ -1880,8 +1867,8 @@
         "links": [
             "ce53d75e5c19b459"
         ],
-        "x": 915,
-        "y": 1500,
+        "x": 795,
+        "y": 1680,
         "wires": [
             [
                 "3bce2d9d3c3bf06f"
@@ -1899,8 +1886,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1420,
-        "y": 1500,
+        "x": 1300,
+        "y": 1680,
         "wires": [
             [
                 "1f8c971e2c14edcf"
@@ -1918,8 +1905,8 @@
             }
         ],
         "language": "none",
-        "x": 1610,
-        "y": 1500,
+        "x": 1490,
+        "y": 1680,
         "wires": [
             [
                 "6d98cb64768550a9"
@@ -1934,8 +1921,8 @@
         "links": [
             "c61e4ab1bf95a764"
         ],
-        "x": 2295,
-        "y": 1500,
+        "x": 2175,
+        "y": 1680,
         "wires": []
     },
     {
@@ -1949,8 +1936,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1800,
-        "y": 1500,
+        "x": 1680,
+        "y": 1680,
         "wires": [
             [
                 "d968e794c6c68304"
@@ -1975,8 +1962,8 @@
             }
         ],
         "outputs": 1,
-        "x": 2180,
-        "y": 1500,
+        "x": 2060,
+        "y": 1680,
         "wires": [
             [
                 "a034d2a7a9b895bb"
@@ -2002,8 +1989,8 @@
         "outputType": "array",
         "table": "Members",
         "name": "Get user record",
-        "x": 1240,
-        "y": 1600,
+        "x": 1120,
+        "y": 1780,
         "wires": [
             [
                 "be3abbefcfba809e"
@@ -2021,8 +2008,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1040,
-        "y": 1600,
+        "x": 920,
+        "y": 1780,
         "wires": [
             [
                 "ccb467c2ff116b9d"
@@ -2035,8 +2022,8 @@
         "z": "ce49487b198a0e71",
         "name": "/kayakingproficiency",
         "info": "",
-        "x": 990,
-        "y": 1560,
+        "x": 870,
+        "y": 1740,
         "wires": []
     },
     {
@@ -2047,8 +2034,8 @@
         "links": [
             "dabef4d0f7056c6f"
         ],
-        "x": 915,
-        "y": 1600,
+        "x": 795,
+        "y": 1780,
         "wires": [
             [
                 "faac82e5ac29543f"
@@ -2066,8 +2053,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1420,
-        "y": 1600,
+        "x": 1300,
+        "y": 1780,
         "wires": [
             [
                 "7e452049cc874dce"
@@ -2085,8 +2072,8 @@
             }
         ],
         "language": "none",
-        "x": 1610,
-        "y": 1600,
+        "x": 1490,
+        "y": 1780,
         "wires": [
             [
                 "7c10f153439a18d9"
@@ -2104,8 +2091,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1800,
-        "y": 1600,
+        "x": 1680,
+        "y": 1780,
         "wires": [
             [
                 "d968e794c6c68304"
@@ -2121,8 +2108,8 @@
         "outputType": "array",
         "table": "Members",
         "name": "Get user record",
-        "x": 1240,
-        "y": 1700,
+        "x": 1120,
+        "y": 1880,
         "wires": [
             [
                 "78043183c3faa351"
@@ -2140,8 +2127,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1040,
-        "y": 1700,
+        "x": 920,
+        "y": 1880,
         "wires": [
             [
                 "2dcba3cf144dd8cb"
@@ -2154,8 +2141,8 @@
         "z": "ce49487b198a0e71",
         "name": "/skatingproficiency",
         "info": "",
-        "x": 990,
-        "y": 1660,
+        "x": 870,
+        "y": 1840,
         "wires": []
     },
     {
@@ -2166,8 +2153,8 @@
         "links": [
             "8d39d8edbcf5a4cf"
         ],
-        "x": 915,
-        "y": 1700,
+        "x": 795,
+        "y": 1880,
         "wires": [
             [
                 "0ddb2b958bbbb1d3"
@@ -2185,8 +2172,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1420,
-        "y": 1700,
+        "x": 1300,
+        "y": 1880,
         "wires": [
             [
                 "237049f005ed356f"
@@ -2204,8 +2191,8 @@
             }
         ],
         "language": "none",
-        "x": 1610,
-        "y": 1700,
+        "x": 1490,
+        "y": 1880,
         "wires": [
             [
                 "c1c824b11e042742"
@@ -2223,8 +2210,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1800,
-        "y": 1700,
+        "x": 1680,
+        "y": 1880,
         "wires": [
             [
                 "d968e794c6c68304"
@@ -2240,8 +2227,8 @@
         "outputType": "array",
         "table": "Members",
         "name": "Get user record",
-        "x": 1240,
-        "y": 1800,
+        "x": 1120,
+        "y": 1980,
         "wires": [
             [
                 "6414cc822a41913b"
@@ -2259,8 +2246,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1040,
-        "y": 1800,
+        "x": 920,
+        "y": 1980,
         "wires": [
             [
                 "aad742083d0822a3"
@@ -2273,8 +2260,8 @@
         "z": "ce49487b198a0e71",
         "name": "/waterproficiency",
         "info": "",
-        "x": 980,
-        "y": 1760,
+        "x": 860,
+        "y": 1940,
         "wires": []
     },
     {
@@ -2285,8 +2272,8 @@
         "links": [
             "a798e93020901278"
         ],
-        "x": 915,
-        "y": 1800,
+        "x": 795,
+        "y": 1980,
         "wires": [
             [
                 "dc3a5f63c77f54bd"
@@ -2304,8 +2291,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1420,
-        "y": 1800,
+        "x": 1300,
+        "y": 1980,
         "wires": [
             [
                 "0842241518fab4de"
@@ -2323,8 +2310,8 @@
             }
         ],
         "language": "none",
-        "x": 1610,
-        "y": 1800,
+        "x": 1490,
+        "y": 1980,
         "wires": [
             [
                 "9ab51116739ef9db"
@@ -2342,8 +2329,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1800,
-        "y": 1800,
+        "x": 1680,
+        "y": 1980,
         "wires": [
             [
                 "d968e794c6c68304"
@@ -2406,8 +2393,8 @@
         "links": [
             "8d670304e47861ec"
         ],
-        "x": 915,
-        "y": 1900,
+        "x": 795,
+        "y": 2080,
         "wires": [
             [
                 "f46d277999c00e86"
@@ -2420,8 +2407,8 @@
         "z": "ce49487b198a0e71",
         "name": "/proficiencies",
         "info": "",
-        "x": 970,
-        "y": 1860,
+        "x": 850,
+        "y": 2040,
         "wires": []
     },
     {
@@ -2435,8 +2422,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1020,
-        "y": 1900,
+        "x": 900,
+        "y": 2080,
         "wires": [
             [
                 "5b9df2a666ee7f85"
@@ -2452,8 +2439,8 @@
         "outputType": "array",
         "table": "Members",
         "name": "Get user record",
-        "x": 1240,
-        "y": 1900,
+        "x": 1120,
+        "y": 2080,
         "wires": [
             [
                 "fa6da40f5aa18129"
@@ -2471,8 +2458,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1790,
-        "y": 1900,
+        "x": 1670,
+        "y": 2080,
         "wires": [
             [
                 "d968e794c6c68304"
@@ -2490,8 +2477,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1430,
-        "y": 1900,
+        "x": 1310,
+        "y": 2080,
         "wires": [
             [
                 "6c7f46aaccfe710e"
@@ -2509,11 +2496,316 @@
             }
         ],
         "language": "none",
-        "x": 1610,
-        "y": 1900,
+        "x": 1490,
+        "y": 2080,
         "wires": [
             [
                 "3d41674d58a2262c"
+            ]
+        ]
+    },
+    {
+        "id": "a59e06181ed4271e",
+        "type": "function",
+        "z": "ce49487b198a0e71",
+        "name": "create query",
+        "func": "//converts sent text into a query to search the airtable\n// var studentId = msg.originalMessage.text;\n// msg.payload = {\"fields\":[\"onboardinglink\"], \"filterByFormula\":\"{Student ID}='\"+studentId+\"'\"};\nmsg.payload = {\"fields\":[\"onboardinglink\"], \"filterByFormula\":\"AND({Student ID} = '\"+msg.sid+\"', {Academic Email}='\"+msg.email+\"')\"};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 1520,
+        "wires": [
+            [
+                "71e0e991697aa778"
+            ]
+        ]
+    },
+    {
+        "id": "71e0e991697aa778",
+        "type": "airtable out",
+        "z": "ce49487b198a0e71",
+        "airtable": "10cb1b39c1f5f855",
+        "operation": "select",
+        "outputType": "array",
+        "table": "Members",
+        "name": "Get user record",
+        "x": 1200,
+        "y": 1520,
+        "wires": [
+            [
+                "3f6bafe6e3e6e186"
+            ]
+        ]
+    },
+    {
+        "id": "3f6bafe6e3e6e186",
+        "type": "function",
+        "z": "ce49487b198a0e71",
+        "name": "get onboard link",
+        "func": "if (msg.payload.length != 0) {\n    msg.userData = msg.payload[0];\n    msg.newUser = false;\n    msg.updateLink = JSON.stringify(msg.userData.fields).split(\"\\\"\")[3];\n} else {\n    msg.newUser = true;\n}\n\n// console.log(msg.updateLink)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1420,
+        "y": 1520,
+        "wires": [
+            [
+                "049608d2f1674df0"
+            ]
+        ]
+    },
+    {
+        "id": "c365fba42f632710",
+        "type": "chatbot-message",
+        "z": "ce49487b198a0e71",
+        "name": "placeholder",
+        "message": [
+            {
+                "message": "placeholder"
+            }
+        ],
+        "language": "none",
+        "x": 1810,
+        "y": 1520,
+        "wires": [
+            [
+                "acab21738d9f5d69"
+            ]
+        ]
+    },
+    {
+        "id": "acab21738d9f5d69",
+        "type": "function",
+        "z": "ce49487b198a0e71",
+        "name": "craft message",
+        "func": "msg.payload.content = \"Your records have been found! Please fill in the blanks in [this form](\" + msg.updateLink + \"), and input the Telegram Code from above.\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2000,
+        "y": 1520,
+        "wires": [
+            [
+                "376e2a5df5b555b1"
+            ]
+        ]
+    },
+    {
+        "id": "049608d2f1674df0",
+        "type": "switch",
+        "z": "ce49487b198a0e71",
+        "name": "",
+        "property": "newUser",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1600,
+        "y": 1520,
+        "wires": [
+            [
+                "c365fba42f632710"
+            ],
+            [
+                "03709fc8ec917773"
+            ]
+        ]
+    },
+    {
+        "id": "03709fc8ec917773",
+        "type": "chatbot-message",
+        "z": "ce49487b198a0e71",
+        "name": "sign up prompt",
+        "message": [
+            {
+                "message": "It seems like we do not have your records stored 🙁 No matter! Just sign up using [this link](https://airtable.com/shrVCvhRsH701DBdl).\n\nThis is your unique Telegram code (do not share it with anyone!):"
+            }
+        ],
+        "language": "none",
+        "x": 1820,
+        "y": 1580,
+        "wires": [
+            [
+                "aefd46da840cb4af"
+            ]
+        ]
+    },
+    {
+        "id": "aefd46da840cb4af",
+        "type": "chatbot-message",
+        "z": "ce49487b198a0e71",
+        "name": "tele code",
+        "message": [
+            {
+                "message": "```{{userId}}```"
+            }
+        ],
+        "language": "none",
+        "x": 1980,
+        "y": 1580,
+        "wires": [
+            [
+                "376e2a5df5b555b1"
+            ]
+        ]
+    },
+    {
+        "id": "376e2a5df5b555b1",
+        "type": "chatbot-params",
+        "z": "ce49487b198a0e71",
+        "name": "add markdown",
+        "params": [
+            {
+                "platform": "telegram",
+                "name": "parseMode",
+                "value": "Markdown"
+            },
+            {
+                "platform": "telegram",
+                "name": "disableWebPagePreview",
+                "value": true
+            }
+        ],
+        "outputs": 1,
+        "x": 2260,
+        "y": 1540,
+        "wires": [
+            [
+                "a0f94bd17d4f9f75"
+            ]
+        ]
+    },
+    {
+        "id": "a0f94bd17d4f9f75",
+        "type": "link out",
+        "z": "ce49487b198a0e71",
+        "name": "sign up end point",
+        "links": [
+            "c61e4ab1bf95a764"
+        ],
+        "x": 2415,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "a5ced491203b2965",
+        "type": "comment",
+        "z": "ce49487b198a0e71",
+        "name": "record found",
+        "info": "",
+        "x": 1810,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "339545089903d0a8",
+        "type": "comment",
+        "z": "ce49487b198a0e71",
+        "name": "record not found",
+        "info": "",
+        "x": 1820,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "c74447d42e53349b",
+        "type": "switch",
+        "z": "ce49487b198a0e71",
+        "name": "",
+        "property": "isOnboard",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 850,
+        "y": 1460,
+        "wires": [
+            [
+                "bd100e924fd442fa"
+            ],
+            [
+                "a59e06181ed4271e"
+            ]
+        ]
+    },
+    {
+        "id": "05b198095b9d05b3",
+        "type": "comment",
+        "z": "ce49487b198a0e71",
+        "name": "command or random text",
+        "info": "",
+        "x": 1130,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "ccabc635501c493d",
+        "type": "comment",
+        "z": "ce49487b198a0e71",
+        "name": "is student id , email",
+        "info": "",
+        "x": 1010,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "9b01e19c9dfe3155",
+        "type": "chatbot-message",
+        "z": "ce49487b198a0e71",
+        "name": "onboard",
+        "message": [
+            {
+                "message": "Alternatively, if you have previously joined SMUX for any activity, you will be able to link your Telegram account by sending your student ID and email address in the following format:\n\n<Student ID>,<Email>\ne.g.: 01234567,xiaoming.2021@sci.smu.edu.sg"
+            }
+        ],
+        "language": "none",
+        "x": 1400,
+        "y": 1420,
+        "wires": [
+            [
+                "36e84837281774bf"
+            ]
+        ]
+    },
+    {
+        "id": "b1aaa172e162ef0a",
+        "type": "function",
+        "z": "ce49487b198a0e71",
+        "name": "check if message is studentid , email",
+        "func": "//split sent message by comma, looking for number , string\nmsg.isOnboard = false;\nvar text = msg.originalMessage.text;\nvar toCheck = text.split(\",\");\nif (!isNaN(toCheck[0]) && toCheck.length == 2) {//if the first part is a number\n    msg.isOnboard = true\n    msg.sid = toCheck[0];\n    msg.email = toCheck[1];\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 1380,
+        "wires": [
+            [
+                "c74447d42e53349b"
             ]
         ]
     }
